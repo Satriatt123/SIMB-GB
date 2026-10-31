@@ -1,0 +1,30 @@
+{
+  "vulkanologi": {
+    "definisi": "Fenomena alam dimana material vulkanik dilepaskan dari dalam gunung api ke permukaan Bumi.",
+    "faktor_internal": [
+      { "faktor": "Subduksi Tektonik", "deskripsi": "Lempeng menyusup dan membuat batuan meleleh jadi magma." },
+      { "faktor": "Tekanan Gas", "deskripsi": "Gas di dalam magma mengembang menciptakan tekanan kuat." }
+    ],
+    "faktor_eksternal": [
+      { "faktor": "Hujan Ekstrem", "deskripsi": "Air mengikis lapisan penutup kawah." },
+      { "faktor": "Gempa Regional", "deskripsi": "Gempa tektonik dari luar meretakkan saluran pipa magma." }
+    ]
+  },
+  "mitigasi": {
+    "pra_bencana": [
+      "Pantau status (Normal, Waspada, Siaga, Awas) melalui PVMBG.",
+      "Ketahui Kawasan Rawan Bencana (KRB).",
+      "Siapkan tas siaga bencana (masker, kacamata, air, P3K)."
+    ],
+    "saat_erupsi": [
+      "Jauhi lereng gunung, lembah, dan daerah aliran lahar.",
+      "Gunakan masker, kacamata pelindung, dan pakaian tertutup.",
+      "Berlindung dan tutup wajah jika terjadi hujan abu."
+    ],
+    "pasca_erupsi": [
+      "Tetap di posko evakuasi hingga status aman.",
+      "Amankan sumber makanan dan minuman dari abu vulkanik.",
+      "Hindari berkendara karena abu merusak mesin dan jarak pandang."
+    ]
+  }
+}

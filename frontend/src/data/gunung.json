@@ -1,0 +1,182 @@
+[
+  {
+    "id": "anak-krakatau",
+    "nama": "Anak Krakatau",
+    "status": "Siaga (Level III)",
+    "koordinat": [-6.102, 105.423],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Erupsi masih berlangsung. Dilarang mendekati pulau baru di sektor barat laut dan tenggara dalam radius 1 km, serta kawasan berbahaya dalam radius 5 km.",
+    "radiusBahaya": 5000,
+    "warna": "#e8801f"
+  },
+  {
+    "id": "merapi",
+    "nama": "Merapi",
+    "status": "Siaga (Level III)",
+    "koordinat": [-7.540, 110.446],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Awan panas guguran berpotensi terjadi sewaktu-waktu. Terdapat potensi bahaya lahar hujan di hulu sungai saat hujan deras.",
+    "radiusBahaya": 7000,
+    "warna": "#e8801f"
+  },
+  {
+    "id": "semeru",
+    "nama": "Semeru",
+    "status": "Siaga (Level III)",
+    "koordinat": [-8.108, 112.920],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Mengalami puluhan gempa letusan. Dilarang melakukan aktivitas apapun hingga radius 13 kilometer dari puncak.",
+    "radiusBahaya": 13000,
+    "warna": "#e8801f"
+  },
+  {
+    "id": "sinabung",
+    "nama": "Sinabung",
+    "status": "Siaga (Level III)",
+    "koordinat": [3.170, 98.392],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas vulkanik masih tinggi. Terdapat potensi awan panas dan guguran lava pijar.",
+    "radiusBahaya": 5000,
+    "warna": "#e8801f"
+  },
+  {
+    "id": "lewotobi",
+    "nama": "Lewotobi Laki-laki",
+    "status": "Siaga (Level III)",
+    "koordinat": [-8.538, 122.778],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Pemantauan visual dan instrumental menunjukkan aktivitas vulkanik yang tinggi di area kawah utama.",
+    "radiusBahaya": 4000,
+    "warna": "#e8801f"
+  },
+  {
+    "id": "bromo",
+    "nama": "Bromo",
+    "status": "Waspada (Level II)",
+    "koordinat": [-7.942, 112.950],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap kawah bertekanan lemah berwarna putih teramati dengan intensitas tipis hingga sedang.",
+    "radiusBahaya": 1000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "dukono",
+    "nama": "Dukono",
+    "status": "Waspada (Level II)",
+    "koordinat": [1.693, 127.894],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Teramati hembusan asap kawah berwarna putih hingga kelabu tebal.",
+    "radiusBahaya": 2000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "gamalama",
+    "nama": "Gamalama",
+    "status": "Waspada (Level II)",
+    "koordinat": [0.800, 127.330],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas kegempaan didominasi oleh gempa tektonik jauh dan gempa hembusan.",
+    "radiusBahaya": 1500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "awu",
+    "nama": "Awu",
+    "status": "Waspada (Level II)",
+    "koordinat": [3.682, 125.456],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Gunung api terlihat jelas hingga tertutup kabut. Asap kawah tidak teramati.",
+    "radiusBahaya": 3000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "banda-api",
+    "nama": "Banda Api",
+    "status": "Waspada (Level II)",
+    "koordinat": [-4.525, 129.871],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi visual normal, namun terekam peningkatan gempa vulkanik dangkal.",
+    "radiusBahaya": 1000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "dempo",
+    "nama": "Dempo",
+    "status": "Waspada (Level II)",
+    "koordinat": [-4.030, 103.130],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Pendaki dilarang mendekati kawah utama karena potensi gas beracun.",
+    "radiusBahaya": 1000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "burnitelong",
+    "nama": "Bur Ni Telong",
+    "status": "Waspada (Level II)",
+    "koordinat": [4.760, 96.820],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas vulkanik berfluktuasi. Masyarakat diimbau tetap waspada.",
+    "radiusBahaya": 1500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "anak-ranakah",
+    "nama": "Anak Ranakah",
+    "status": "Waspada (Level II)",
+    "koordinat": [-8.620, 120.520],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Terlihat asap putih tipis dari puncak kawah. Tingkat aktivitas di atas normal.",
+    "radiusBahaya": 1500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "slamet",
+    "nama": "Slamet",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.242, 109.208],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Gunung api terlihat jelas. Tidak ada peningkatan aktivitas vulkanik yang signifikan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "gede",
+    "nama": "Gede",
+    "status": "Normal (Level I)",
+    "koordinat": [-6.780, 106.980],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi aman untuk pendakian di luar radius kawah aktif.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "agung",
+    "nama": "Agung",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.343, 115.508],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap kawah nihil. Tingkat kegempaan berada pada batas dasar (baseline).",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "batur",
+    "nama": "Batur",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.242, 115.375],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Cuaca cerah, angin lemah. Kondisi aktivitas vulkanik dalam status stabil.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "ciremai",
+    "nama": "Ciremai",
+    "status": "Normal (Level I)",
+    "koordinat": [-6.892, 108.400],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Gunung terlihat jelas hingga tertutup kabut. Tidak ada laporan aktivitas anomali.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  }
+]
