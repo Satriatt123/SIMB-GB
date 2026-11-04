@@ -15,6 +15,7 @@ const LEVEL = [
   ...l,
   gunung: GUNUNG.filter((g) => g.status.startsWith(l.nama)),
 }));
+const TANGGAl = GUNUNG[0]?.waktuUpdate;
 
 const MODEL_URL = '/asset/Volcano8.glb';
 const HIDE_PATTERN = /ico|smoke|asap|domain|sphere/i;
@@ -337,9 +338,12 @@ export default function Beranda() {
               ))}
           </div>
 
-          <ul className="mt-8 m-0 p-0 list-none">
-  {STATUS.level.map((l) => {
+              <ul className="mt-8 m-0 p-0 list-none">
+  {LEVEL.map((l) => {
     const kalem = l.nama === 'Normal' || l.jumlah === 0;
+    const tampil = l.nama === 'Siaga' || l.nama === 'Waspada';
+    const sisa = l.jumlah - l.gunung.length;
+
     return (
       <li
         key={l.nama}
@@ -350,24 +354,31 @@ export default function Beranda() {
         </span>
 
         <div>
-          <p className={`text-xl font-semibold ${kalem ? 'text-[#a9ada9]' : 'text-[#f1efe8]'}`}>
-            {l.nama}
-          </p>
+          <p className={`text-xl font-semibold ${kalem ? 'text-[#a9ada9]' : 'text-[#f1efe8]'}`}>{l.nama}</p>
           <p className="mt-1 text-[#a9ada9] leading-relaxed max-w-prose">{l.arti}</p>
-          {l.gunung.length > 0 && (
-            <p className="mt-3 text-[15px] text-[#f1efe8] leading-relaxed">
-              {l.gunung.join(' · ')}
-            </p>
-          )}
-        </div>
 
-        <p className={`simb-num text-5xl leading-none ${kalem ? 'text-[#5b666c]' : 'text-[#f1efe8]'}`}>
+          {tampil && l.gunung.length > 0 && (
+            <ul className="mt-4 m-0 p-0 list-none flex flex-wrap gap-x-5 gap-y-1 text-[15px]">
+              {l.gunung.map((g) => (
+                <li key={g.id} className="text-[#f1efe8]">
+                  {g.nama}
+                  {l.nama === 'Siaga' && g.radiusBahaya > 0 && (
+                    <span className="ml-1.5 text-[#8a908d]">{g.radiusBahaya / 1000} km</span>
+                  )}
+                </li>
+              ))}
+              {sisa > 0 && <li className="text-[#8a908d]">+{sisa} lainnya</li>}
+            </ul>
+          )}
+          </div>
+
+          <p className={`simb-num text-5xl leading-none ${kalem ? 'text-[#5b666c]' : 'text-[#f1efe8]'}`}>
           {l.jumlah}
-        </p>
-      </li>
-    );
-  })}
-</ul>
+          </p>
+        </li>
+        );
+      })}
+        </ul>
         </div>
       </section>
     </div>
