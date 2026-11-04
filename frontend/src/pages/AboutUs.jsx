@@ -87,7 +87,7 @@ export default function AboutUs() {
             </p>
             <p>
               Proyek ini dikembangkan sebagai tugas semester oleh mahasiswa
-              Teknik Geomatika, Institut Teknologi Sumatera. Seluruh data
+              Sistem Informasi, Universitas Pembangunan Nasional. Seluruh data
               bersumber dari lembaga resmi pemerintah Indonesia.
             </p>
           </motion.div>
@@ -137,7 +137,7 @@ export default function AboutUs() {
             Anggota Tim
           </motion.h2>
 
-          <p className="mt-3 text-[#8a908d]">Kelompok 2 — Teknik Geomatika, ITERA</p>
+          <p className="mt-3 text-[#8a908d]">Kelompok 2</p>
 
           <motion.ul
             variants={staggerContainer}
