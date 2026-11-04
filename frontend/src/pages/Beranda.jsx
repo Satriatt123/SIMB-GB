@@ -35,36 +35,65 @@ const FONT_CSS = `
 .simb-num { font-stretch: 78%; font-weight: 700; font-variant-numeric: tabular-nums; }
 `;
 
-function Smoke({ position = [0, 1.5, 0], count = 14 }) {
+function Smoke({ position = [0, 1.5, 0], count = 28 }) {
   const refs = useRef([]);
+
+  const seeds = useMemo(
+    ()=>
+      Array.from({ length: count }, () =>({
+        ox: (Math.random() -  0.5) * 0.25,
+        oz: (Math.random() - 0.5) * 0.25,
+        drift: 0.5 * Math.random() * 0.5,
+        rot: (Math.random() - 0.5) * 0.6,
+        phase: Math.random(),
+        size: 0.8 * Math.random() * 0.6,
+      })),
+    [count]
+  );
 
   const texture = useMemo(() => {
     const c = document.createElement('canvas');
-    c.width = c.height = 128;
+    c.width = c.height = 256;
     const ctx = c.getContext('2d');
-    const g = ctx.createRadialGradient(64, 64, 0, 64, 64, 64);
-    g.addColorStop(0, 'rgba(255,255,255,0.55)');
-    g.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = g;
-    ctx.fillRect(0, 0, 128, 128);
+    for (let k = 0; k < 7; k++) {
+      const x = 128 + (Math.random() - 0.5) * 90;
+      const y = 128 + (Math.random() - 0.5) * 90;
+      const r = 50 + Math.random() * 40;
+      const g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, 'rgba(255,255,255,0.35)');
+      g.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = g;
+      ctx.fillRect(0, 0, 256, 256);
+    }
     return new THREE.CanvasTexture(c);
   }, []);
 
+  const warm = useMemo(() => new THREE.Color('#ff9a5a'), []);
+  const cool = useMemo(() => new THREE.Color('#8d9399'), []);
+
   useFrame(({ clock }) => {
-    refs.current.forEach((s, i) => {
-      if (!s) return;
-      const t = (clock.elapsedTime * 0.15 + i / count) % 1;
-      s.position.set(Math.sin(i * 12.9) * 0.4 * t, t * 2.5, Math.cos(i * 7.3) * 0.2 * t);
-      s.scale.setScalar(0.5 + t * 1.6);
-      s.material.opacity = (1 - t) * Math.min(1, t * 8) * 0.6;
+    const time = clock.elapsedTime;
+    seeds.forEach((s, i) => {
+      const sp = refs.current[i];
+      if (!sp) return;
+      const t = (time * 0.08 + s.phase) % 1;
+      sp.position.set(
+        s.ox + t * s.drift * 0.9 + Math.sin(time * 0.5 + i) * 0.05 * t,
+        t * 3.2,
+        s.oz + Math.cos(time * 0.4 + i) * 0.05 * t
+      );
+      sp.scale.setScalar(s.size * (0.6 + t * 2.4));
+      sp.material.opacity = Math.min(1, t * 6) * Math.pow(1 - t, 1.5) * 0.55;
+      sp.material.rotation = s.rot * time * 0.3;
+      sp.material.color.lerpColors(warm, cool, Math.min(1, t * 2.5));
     });
   });
 
   return (
     <group position={position}>
-      {Array.from({ length: count }, (_, i) => (
-        <sprite key={i} ref={(el) => (refs.current[i] = el)}>
-          <spriteMaterial map={texture} transparent depthWrite={false} color="#cfd2d6" />
+      {seeds.map((_, i) => (
+        <sprite key={i} ref={(el) => { refs.current[i] = el; }}>
+          <spriteMaterial map={texture} transparent depthWrite={false} />
         </sprite>
       ))}
     </group>
@@ -94,6 +123,11 @@ function VolcanoModel() {
   const { scene, animations } = useGLTF(MODEL_URL);
   const { actions } = useAnimations(animations, scene);
   const uTime = useRef({ value: 0 });
+  const group = useRef();
+  useFrame(({ clock }) => {
+    uTime.current.value  = clock.elapsedTime;
+    if (group.current) group.current.rotation.y = Math.sin(clock.elapsedTime * 0.2) * 0.25;
+  });
 
   useEffect(() => {
     Object.values(actions).forEach((a) => a?.reset().play());
@@ -185,7 +219,7 @@ function VolcanoModel() {
   });
 
   return (
-    <group position={[0, -1, 0]}>
+    <group ref={group} position={[0, -1, 0]}>
       <primitive object={scene} />
       <Smoke position={[0, 1.5, 0]} />
 
@@ -238,7 +272,7 @@ export default function Beranda() {
               <VolcanoModel />
             </Suspense>
 
-            <OrbitControls enableZoom={false} enablePan={false} autoRotate={!reduceMotion} autoRotateSpeed={0.5} />
+            <OrbitControls enableZoom={false} enablePan={false}  minAzimuthAngle={-Math.PI / 4} maxAzimuthAngle={Math.PI / 4} minPolarAngle={Math.PI / 4} maxPolarAngle={Math.PI / 2.2} />
 
             <EffectComposer multisampling={0}>
               <Bloom mipmapBlur intensity={0.8} luminanceThreshold={0.5} luminanceSmoothing={0.2} radius={0.6} />
