@@ -7,10 +7,10 @@ import { EffectComposer, Bloom, ToneMapping } from '@react-three/postprocessing'
 import GUNUNG from '../data/gunung.json';
 
 const LEVEL = [
-  { romawi: 'IV',  nama: 'Awas',    jumlah: 0,  warna: '#d6322c', arti: '...', gunung: [] },
-  { romawi: 'III', nama: 'Siaga',   jumlah: 5,  warna: '#e8801f', arti: '...', gunung: [] },
-  { romawi: 'II',  nama: 'Waspada', jumlah: 22, warna: '#d9b72b', arti: '...', gunung: [] },
-  { romawi: 'I',   nama: 'Normal',  jumlah: 42, warna: '#3f9b5f', arti: '...', gunung: [] },
+  { romawi: 'IV',  nama: 'Awas',    jumlah: 0,  warna: '#d6322c', arti: 'Erupsi sedang berlangsung atau diperkirakan segera terjadi.' },
+  { romawi: 'III', nama: 'Siaga',   jumlah: 5,  warna: '#e8801f', arti: 'Peningkatan aktivitas makin nyata, atau gunung sudah mengalami erupsi.' },
+  { romawi: 'II',  nama: 'Waspada', jumlah: 22, warna: '#d9b72b', arti: 'Aktivitas naik di atas normal, misalnya gempa vulkanik dangkal atau gas keluar dari kawah.' },
+  { romawi: 'I',   nama: 'Normal',  jumlah: 42, warna: '#3f9b5f', arti: 'Tidak ada gejala yang menuju letusan. Pemantauan rutin tetap berjalan.' },
 ].map((l) => ({
   ...l,
   gunung: GUNUNG.filter((g) => g.status.startsWith(l.nama)),
@@ -43,10 +43,10 @@ function Smoke({ position = [0, 1.5, 0], count = 28 }) {
       Array.from({ length: count }, () =>({
         ox: (Math.random() -  0.5) * 0.25,
         oz: (Math.random() - 0.5) * 0.25,
-        drift: 0.5 * Math.random() * 0.5,
+        drift: 0.5 + Math.random() * 0.5,
         rot: (Math.random() - 0.5) * 0.6,
         phase: Math.random(),
-        size: 0.8 * Math.random() * 0.6,
+        size: 0.8 + Math.random() * 0.6,
       })),
     [count]
   );
@@ -239,7 +239,7 @@ export default function Beranda() {
   const reduceMotion =
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const ringkasan = STATUS.level.map((l) => `${l.jumlah} ${l.nama}`).join(', ');
+  const ringkasan = LEVEL.map((l) => `${l.jumlah} ${l.nama}`).join(', ');
 
   return (
     <div className="simb min-h-screen bg-[#1c2226] text-[#dcd9d0]">
@@ -331,9 +331,7 @@ export default function Beranda() {
             aria-label={`Dari ${STATUS.dipantau} gunung api yang dipantau: ${ringkasan}`}
             className="flex h-3 w-full gap-[2px]"
           >
-            {STATUS.level
-              .filter((l) => l.jumlah > 0)
-              .map((l) => (
+            {LEVEL.filter((l) => l.jumlah > 0).map((l) => (
                 <span key={l.nama} style={{ flexGrow: l.jumlah, background: l.warna }} className="block rounded-[1px]" />
               ))}
           </div>
