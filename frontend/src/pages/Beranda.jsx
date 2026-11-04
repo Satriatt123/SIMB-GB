@@ -15,7 +15,7 @@ const LEVEL = [
   ...l,
   gunung: GUNUNG.filter((g) => g.status.startsWith(l.nama)),
 }));
-const TANGGAl = GUNUNG[0]?.waktuUpdate;
+const TANGGAL = GUNUNG[0]?.waktuUpdate;
 
 const MODEL_URL = '/asset/Volcano8.glb';
 const HIDE_PATTERN = /ico|smoke|asap|domain|sphere/i;
@@ -214,10 +214,6 @@ function VolcanoModel() {
     });
   }, [scene]);
 
-  useFrame(({ clock }) => {
-    uTime.current.value = clock.elapsedTime;
-  });
-
   return (
     <group ref={group} position={[0, -1, 0]}>
       <primitive object={scene} />
@@ -285,7 +281,8 @@ export default function Beranda() {
         <div aria-hidden="true" className="pointer-events-none absolute inset-0 hidden lg:block bg-gradient-to-l from-[#1c2226]/85 via-transparent to-transparent" />
 
         <div className="pointer-events-none relative z-10 mx-auto flex min-h-[100svh] max-w-[1920px] items-end justify-end px-6 pb-12 pt-28 lg:items-center lg:px-12 xl:px-16 lg:pb-0">
-          <div className="pointer-events-auto w-full lg:w-5/12 lg:text-right">
+          <
+            div className="pointer-events-auto w-full lg:w-5/12 lg:text-right">
             <h1 className="simb-display uppercase text-5xl sm:text-6xl lg:text-7xl 2xl:text-8xl leading-[1.02] text-[#f1efe8]">
               Kenali gunung api sebelum ia meletus
             </h1>
@@ -312,7 +309,7 @@ export default function Beranda() {
         <div className="lg:col-span-4">
           <h2 className="simb-display text-4xl lg:text-5xl text-[#f1efe8] leading-none">Status gunung api</h2>
           <p className="mt-4 text-[#a9ada9] leading-relaxed max-w-sm">
-            Data per {STATUS.tanggal}. Status bisa berubah sewaktu-waktu mengikuti pemantauan PVMBG. Untuk yang paling baru, buka{' '}
+            Data per {TANGGAL}. Status bisa berubah sewaktu-waktu mengikuti pemantauan PVMBG. Untuk yang paling baru, buka{' '}
             <a
               href="https://magma.esdm.go.id/"
               target="_blank"
