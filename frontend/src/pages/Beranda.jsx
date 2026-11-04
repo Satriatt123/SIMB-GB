@@ -4,18 +4,17 @@ import * as THREE from 'three';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, useGLTF, useAnimations, Html } from '@react-three/drei';
 import { EffectComposer, Bloom, ToneMapping } from '@react-three/postprocessing';
+import GUNUNG from '../data/gunung.json';
 
-const STATUS = {
-  tanggal: '7 September 2026',
-  dipantau: 69,
-  aktif: 127,
-  level: [
+const LEVEL = [
   { romawi: 'IV',  nama: 'Awas',    jumlah: 0,  warna: '#d6322c', arti: '...', gunung: [] },
-  { romawi: 'III', nama: 'Siaga',   jumlah: 5,  warna: '#e8801f', arti: '...', gunung: ['Nama 1', 'Nama 2', /* ... */] },
-  { romawi: 'II',  nama: 'Waspada', jumlah: 22, warna: '#d9b72b', arti: '...', gunung: [/* ... */] },
+  { romawi: 'III', nama: 'Siaga',   jumlah: 5,  warna: '#e8801f', arti: '...', gunung: [] },
+  { romawi: 'II',  nama: 'Waspada', jumlah: 22, warna: '#d9b72b', arti: '...', gunung: [] },
   { romawi: 'I',   nama: 'Normal',  jumlah: 42, warna: '#3f9b5f', arti: '...', gunung: [] },
-],
-};
+].map((l) => ({
+  ...l,
+  gunung: GUNUNG.filter((g) => g.status.startsWith(l.nama)),
+}));
 
 const MODEL_URL = '/asset/Volcano8.glb';
 const HIDE_PATTERN = /ico|smoke|asap|domain|sphere/i;

@@ -10,18 +10,17 @@ export async function fetchMagmaRealtimeData() {
     const DATA = await RESPONSE.json();
     
     if (DATA && DATA.success) {
-      // Memetakan struktur data mentah API menjadi siap pakai di React Leaflet
       return DATA.data.map(gunung => {
         let warnaHex = "#16a34a"; // Default Level I (Normal)
         const STATUS_STR = gunung.status.toLowerCase();
         
-        if (STATUS_STR.includes('waspada') || STATUS_STR.includes('ii')) {
-          warnaHex = "#eab308"; // Level II
-        } else if (STATUS_STR.includes('siaga') || STATUS_STR.includes('iii')) {
-          warnaHex = "#d9651b"; // Level III
-        } else if (STATUS_STR.includes('awas') || STATUS_STR.includes('iv')) {
-          warnaHex = "#dc2626"; // Level IV
-        }
+        function levelDariStatus(status = '') {
+        const t = status.toLowerCase();
+        if (t.includes('awas'))    return { romawi: 'IV',  warna: '#d6322c' };
+        if (t.includes('siaga'))   return { romawi: 'III', warna: '#e8801f' };
+        if (t.includes('waspada')) return { romawi: 'II',  warna: '#d9b72b' };
+        return { romawi: 'I', warna: '#3f9b5f' };
+      }
 
         return {
           id: gunung.ga_code,
