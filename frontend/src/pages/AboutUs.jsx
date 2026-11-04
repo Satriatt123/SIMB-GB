@@ -1,86 +1,220 @@
 import React from 'react';
+import { motion } from 'framer-motion';
+import { ExternalLink } from 'lucide-react';
+import PageHeader from '../component/PageHeader.jsx';
 
 const TEAM_MEMBERS = [
-  {
-    nama: 'Vanessa Putri Anazwa',
-    nim: 'NIM 124250061',
-    peran: 'UI/3D Designer & Report Compiler',
-    foto: ''
-  },
-  {
-    nama: 'Satria Anjasmara Hammam',
-    nim: 'NIM 124250063',
-    peran: 'Lead Web Developer & QA',
-    foto: ''
-  },
-  {
-    nama: 'Chairil Fikri Maulidi',
-    nim: 'NIM 124250055',
-    peran: 'GIS & Map Developer',
-    foto: ''
-  },
-  {
-    nama: 'Ajeng Marganingtyas',
-    nim: 'NIM 124250059',
-    peran: 'Backend, Database & System Analyst',
-    foto: ''
-  },
-  {
-    nama: 'Nabila Tata Arinda',
-    nim: 'NIM 124250060',
-    peran: 'Content Integrator & Technical Writer',
-    foto: ''
-  }
+  { nama: 'Vanessa Putri Anazwa',       nim: '124250061', peran: 'UI/3D Designer & Report Compiler' },
+  { nama: 'Satria Anjasmara Hammam',    nim: '124250063', peran: 'Lead Web Developer & QA' },
+  { nama: 'Chairil Fikri Maulidi',      nim: '124250055', peran: 'GIS & Map Developer' },
+  { nama: 'Ajeng Marganingtyas',        nim: '124250059', peran: 'Backend, Database & System Analyst' },
+  { nama: 'Nabila Tata Arinda',         nim: '124250060', peran: 'Content Integrator & Technical Writer' },
 ];
+
+const TECH_STACK = [
+  { nama: 'React', deskripsi: 'Antarmuka pengguna dan routing SPA' },
+  { nama: 'Three.js', deskripsi: 'Visualisasi 3D model gunung berapi' },
+  { nama: 'Leaflet', deskripsi: 'Peta interaktif Kawasan Rawan Bencana' },
+  { nama: 'Tailwind CSS', deskripsi: 'Styling utility-first dan design system' },
+  { nama: 'Express.js', deskripsi: 'Backend API dan integrasi data' },
+];
+
+const DATA_SOURCES = [
+  {
+    nama: 'PVMBG',
+    deskripsi: 'Pusat Vulkanologi dan Mitigasi Bencana Geologi',
+    url: 'https://vsi.esdm.go.id/',
+  },
+  {
+    nama: 'MAGMA Indonesia',
+    deskripsi: 'Multiplatform Application for Geohazard Mitigation and Assessment',
+    url: 'https://magma.esdm.go.id/',
+  },
+];
+
+const staggerContainer = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 16 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
 
 export default function AboutUs() {
   return (
-    <div className="p-8 max-w-6xl mx-auto min-h-[80vh] flex flex-col justify-center">
-      
-      <div className="flex items-center gap-4 mb-12 border-b border-neutral-700 pb-4">
-        <div className="text-orange-500 text-4xl">👥</div>
-        <h2 className="text-3xl font-bold text-white uppercase tracking-wider">
-          Tentang Kami - Kelompok 2
-        </h2>
-      </div>
+    <>
+      <PageHeader
+        title="Tentang Kami"
+        description="Tim mahasiswa di balik SIMB-GB — Sistem Informasi Manajemen Bencana Gunung Berapi."
+      />
 
-      <div className="flex flex-col gap-8 items-center">
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-          {TEAM_MEMBERS.slice(0, 3).map((member, idx) => (
-            <div key={idx} className="bg-neutral-800/80 border border-neutral-700 p-6 rounded-xl flex flex-col items-center text-center shadow-lg transition hover:border-orange-500/50">
-              <div className="flex items-center gap-4 mb-4 w-full justify-start">
-                <img src={member.foto} alt={member.nama} className="w-16 h-16 rounded-full bg-neutral-700" />
-                <div className="text-left">
-                  <h3 className="text-white font-bold text-[15px]">{member.nama}</h3>
-                  <p className="text-neutral-400 text-sm">({member.nim})</p>
+      <main className="mx-auto max-w-[1920px] px-6 lg:px-12 xl:px-16 py-16 lg:py-24">
+        <section className="border-b border-[#343c41] pb-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.4 }}
+            className="simb-display text-3xl lg:text-4xl leading-none text-[#f1efe8]"
+          >
+            Tentang SIMB-GB
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="mt-6 max-w-prose space-y-4 text-lg leading-relaxed text-[#a9ada9]"
+          >
+            <p>
+              <strong className="text-[#dcd9d0]">SIMB-GB</strong> (Sistem
+              Informasi Manajemen Bencana Gunung Berapi) adalah platform
+              informasi kebencanaan vulkanik di Indonesia. Sistem ini dirancang
+              untuk menyajikan data gunung berapi secara interaktif melalui
+              visualisasi 3D, peta Kawasan Rawan Bencana (KRB), ensiklopedia
+              gunung api, serta panduan mitigasi bencana.
+            </p>
+            <p>
+              Proyek ini dikembangkan sebagai tugas semester oleh mahasiswa
+              Teknik Geomatika, Institut Teknologi Sumatera. Seluruh data
+              bersumber dari lembaga resmi pemerintah Indonesia.
+            </p>
+          </motion.div>
+        </section>
+
+        <section className="border-b border-[#343c41] py-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.4 }}
+            className="simb-display text-3xl lg:text-4xl leading-none text-[#f1efe8]"
+          >
+            Tech Stack
+          </motion.h2>
+
+          <motion.ul
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            className="mt-8 m-0 p-0 list-none"
+          >
+            {TECH_STACK.map((tech) => (
+              <motion.li
+                key={tech.nama}
+                variants={fadeUp}
+                className="grid grid-cols-1 sm:grid-cols-[180px_1fr] gap-x-8 gap-y-1 py-4 border-t border-[#343c41] last:border-b"
+              >
+                <span className="simb font-semibold text-[#f1efe8]">
+                  {tech.nama}
+                </span>
+                <span className="text-[#a9ada9]">{tech.deskripsi}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </section>
+
+        <section className="border-b border-[#343c41] py-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.4 }}
+            className="simb-display text-3xl lg:text-4xl leading-none text-[#f1efe8]"
+          >
+            Anggota Tim
+          </motion.h2>
+
+          <p className="mt-3 text-[#8a908d]">Kelompok 2 — Teknik Geomatika, ITERA</p>
+
+          <motion.ul
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            className="mt-8 m-0 p-0 list-none"
+          >
+            {TEAM_MEMBERS.map((member) => (
+              <motion.li
+                key={member.nim}
+                variants={fadeUp}
+                className="grid grid-cols-1 sm:grid-cols-[1fr_auto] items-baseline gap-x-8 gap-y-1 py-5 border-t border-[#343c41] last:border-b"
+              >
+                <div className="min-w-0">
+                  <h4 className="simb text-base font-semibold text-[#f1efe8] leading-snug">
+                    {member.nama}
+                  </h4>
+                  <p className="mt-0.5 text-sm text-[#8a908d] simb-num">
+                    NIM {member.nim}
+                  </p>
                 </div>
-              </div>
-              <p className="text-orange-400 text-sm font-medium w-full text-left border-t border-neutral-700 pt-3">
-                {member.peran}
-              </p>
-            </div>
-          ))}
-        </div>
+                <span className="text-sm text-[#a9ada9] sm:text-right">{member.peran}</span>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </section>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full md:w-2/3">
-          {TEAM_MEMBERS.slice(3, 5).map((member, idx) => (
-            <div key={idx} className="bg-neutral-800/80 border border-neutral-700 p-6 rounded-xl flex flex-col items-center text-center shadow-lg transition hover:border-orange-500/50">
-              <div className="flex items-center gap-4 mb-4 w-full justify-start">
-                <img src={member.foto} alt={member.nama} className="w-16 h-16 rounded-full bg-neutral-700" />
-                <div className="text-left">
-                  <h3 className="text-white font-bold text-[15px]">{member.nama}</h3>
-                  <p className="text-neutral-400 text-sm">({member.nim})</p>
-                </div>
-              </div>
-              <p className="text-orange-400 text-sm font-medium w-full text-left border-t border-neutral-700 pt-3">
-                {member.peran}
-              </p>
-            </div>
-          ))}
-        </div>
+        <section className="pt-16">
+          <motion.h2
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.4 }}
+            className="simb-display text-3xl lg:text-4xl leading-none text-[#f1efe8]"
+          >
+            Sumber Data
+          </motion.h2>
 
-      </div>
-    </div>
+          <p className="mt-3 max-w-prose text-[#a9ada9]">
+            Data gunung berapi dan status kebencanaan bersumber dari lembaga
+            resmi pemerintah Indonesia berikut.
+          </p>
+
+          <motion.ul
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-40px' }}
+            className="mt-8 m-0 p-0 list-none"
+          >
+            {DATA_SOURCES.map((src) => (
+              <motion.li
+                key={src.nama}
+                variants={fadeUp}
+                className="grid grid-cols-1 sm:grid-cols-[180px_1fr_auto] items-center gap-x-8 gap-y-1 py-4 border-t border-[#343c41] last:border-b"
+              >
+                <span className="simb font-semibold text-[#f1efe8]">
+                  {src.nama}
+                </span>
+                <span className="text-[#a9ada9] text-sm sm:text-base">
+                  {src.deskripsi}
+                </span>
+                <a
+                  href={src.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-[#f1efe8] underline underline-offset-4 decoration-[#5b666c] hover:decoration-[#dcd9d0] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dcd9d0]"
+                >
+                  Kunjungi
+                  <ExternalLink size={14} aria-hidden="true" />
+                </a>
+              </motion.li>
+            ))}
+          </motion.ul>
+        </section>
+      </main>
+    </>
   );
 }
