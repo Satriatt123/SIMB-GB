@@ -10,11 +10,11 @@ const STATUS = {
   dipantau: 69,
   aktif: 127,
   level: [
-    { romawi: 'I', nama: 'Normal', jumlah: 42, warna: '#3f9b5f', arti: 'Tidak ada gejala yang menuju letusan. Pemantauan rutin tetap berjalan.' },
-    { romawi: 'II', nama: 'Waspada', jumlah: 22, warna: '#d9b72b', arti: 'Aktivitas naik di atas normal, misalnya gempa vulkanik dangkal atau gas keluar dari kawah.' },
-    { romawi: 'III', nama: 'Siaga', jumlah: 5, warna: '#e8801f', arti: 'Peningkatan aktivitas makin nyata, atau gunung sudah mengalami erupsi.' },
-    { romawi: 'IV', nama: 'Awas', jumlah: 0, warna: '#d6322c', arti: 'Erupsi sedang berlangsung atau diperkirakan segera terjadi.' },
-  ],
+  { romawi: 'IV',  nama: 'Awas',    jumlah: 0,  warna: '#d6322c', arti: '...', gunung: [] },
+  { romawi: 'III', nama: 'Siaga',   jumlah: 5,  warna: '#e8801f', arti: '...', gunung: ['Nama 1', 'Nama 2', /* ... */] },
+  { romawi: 'II',  nama: 'Waspada', jumlah: 22, warna: '#d9b72b', arti: '...', gunung: [/* ... */] },
+  { romawi: 'I',   nama: 'Normal',  jumlah: 42, warna: '#3f9b5f', arti: '...', gunung: [] },
+],
 };
 
 const MODEL_URL = '/asset/Volcano8.glb';
@@ -339,24 +339,36 @@ export default function Beranda() {
           </div>
 
           <ul className="mt-8 m-0 p-0 list-none">
-            {STATUS.level.map((l) => (
-              <li
-                key={l.nama}
-                className="grid grid-cols-[4px_1fr_auto] gap-x-5 items-start py-5 border-t border-[#343c41] last:border-b"
-              >
-                <span aria-hidden="true" className="block self-stretch rounded-full" style={{ background: l.warna }} />
-                <div>
-                  <p className="text-xl font-semibold text-[#f1efe8]">
-                    {l.nama} <span className="ml-1 text-base font-normal text-[#8a908d]">Level {l.romawi}</span>
-                  </p>
-                  <p className="mt-1 text-[#a9ada9] leading-relaxed max-w-prose">{l.arti}</p>
-                </div>
-                <p className={`simb-num text-5xl leading-none ${l.jumlah === 0 ? 'text-[#5b666c]' : 'text-[#f1efe8]'}`}>
-                  {l.jumlah}
-                </p>
-              </li>
-            ))}
-          </ul>
+  {STATUS.level.map((l) => {
+    const kalem = l.nama === 'Normal' || l.jumlah === 0;
+    return (
+      <li
+        key={l.nama}
+        className="grid grid-cols-[3.5rem_1fr_auto] md:grid-cols-[7rem_1fr_auto] gap-x-5 items-baseline py-6 border-t border-[#343c41] last:border-b"
+      >
+        <span className="simb-num text-3xl" style={{ color: kalem ? '#5b666c' : l.warna }}>
+          {l.romawi}
+        </span>
+
+        <div>
+          <p className={`text-xl font-semibold ${kalem ? 'text-[#a9ada9]' : 'text-[#f1efe8]'}`}>
+            {l.nama}
+          </p>
+          <p className="mt-1 text-[#a9ada9] leading-relaxed max-w-prose">{l.arti}</p>
+          {l.gunung.length > 0 && (
+            <p className="mt-3 text-[15px] text-[#f1efe8] leading-relaxed">
+              {l.gunung.join(' · ')}
+            </p>
+          )}
+        </div>
+
+        <p className={`simb-num text-5xl leading-none ${kalem ? 'text-[#5b666c]' : 'text-[#f1efe8]'}`}>
+          {l.jumlah}
+        </p>
+      </li>
+    );
+  })}
+</ul>
         </div>
       </section>
     </div>
