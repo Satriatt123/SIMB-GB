@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
 import Beranda from './pages/Beranda.jsx';
 import PetaKRB from './pages/PetaKRB.jsx';
 import PusatMitigasi from './pages/PusatMitigasi.jsx';
 import Ensiklo from './pages/Ensiklo.jsx';
 import AboutUs from './pages/AboutUs.jsx';
+import Footer from './component/Footer.jsx';
 
 const FONT_CSS = `
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap');
@@ -43,7 +45,7 @@ function Nav() {
   const linkCls = ({ isActive }) =>
     `relative py-2 text-[15px] font-medium transition-colors ${
       isActive
-        ? 'text-[#f1efe8] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-0.5 after:bg-[#d9651b]'
+        ? 'text-[#f1efe8] after:absolute after:inset-x-0 after:-bottom-0.5 after:h-[3px] after:bg-[#d9651b]'
         : 'text-[#c4c6c1] hover:text-[#f1efe8]'
     } ${focusRing}`;
 
@@ -93,24 +95,36 @@ function Nav() {
         </button>
       </nav>
 
-      {open && (
-        <div id="menu-mobile" className="md:hidden border-t border-[#343c41] px-6 pb-6 flex flex-col">
-          {[...NAV, CTA].map((item) => (
-            <NavLink
-              key={item.to}
-              to={item.to}
-              end={item.end}
-              className={({ isActive }) =>
-                `py-3.5 text-lg border-b border-[#343c41] ${
-                  isActive ? 'text-[#f1efe8] font-semibold' : 'text-[#c4c6c1]'
-                } ${focusRing}`
-              }
-            >
-              {item.label}
-            </NavLink>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="menu-mobile"
+            key="mobile-menu"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="overflow-hidden md:hidden border-t border-[#343c41]"
+          >
+            <div className="px-6 pb-6 flex flex-col">
+              {[...NAV, CTA].map((item) => (
+                <NavLink
+                  key={item.to}
+                  to={item.to}
+                  end={item.end}
+                  className={({ isActive }) =>
+                    `py-3.5 text-lg border-b border-[#343c41] ${
+                      isActive ? 'text-[#f1efe8] font-semibold' : 'text-[#c4c6c1]'
+                    } ${focusRing}`
+                  }
+                >
+                  {item.label}
+                </NavLink>
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
@@ -130,6 +144,8 @@ export default function App() {
           <Route path="/mitigasi" element={<PusatMitigasi />} />
           <Route path="/tentang" element={<AboutUs />} />
         </Routes>
+
+        <Footer />
       </div>
     </BrowserRouter>
   );

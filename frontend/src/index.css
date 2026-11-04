@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+@layer base {
+  .leaflet-map-pane,
+  .leaflet-map-pane *,
+  .leaflet-tile,
+  .leaflet-tile-pane,
+  .leaflet-tile-container,
+  .leaflet-overlay-pane,
+  .leaflet-shadow-pane,
+  .leaflet-marker-pane,
+  .leaflet-popup-pane,
+  .leaflet-zoom-box,
+  .leaflet-zoom-animated,
+  .leaflet-marker-icon,
+  .leaflet-marker-shadow {
+    box-sizing: content-box;
+  }
+
+  .leaflet-container img {
+    max-width: none;
+    display: inline;
+  }
+}

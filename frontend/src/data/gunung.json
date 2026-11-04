@@ -5,7 +5,7 @@
     "status": "Siaga (Level III)",
     "koordinat": [-6.102, 105.423],
     "waktuUpdate": "31 Oktober 2026",
-    "visual": "Erupsi masih berlangsung. Dilarang mendekati pulau baru di sektor barat laut dan tenggara dalam radius 1 km, serta kawasan berbahaya dalam radius 5 km.",
+    "visual": "Erupsi masih berlangsung. Dilarang mendekati pulau baru di sektor barat laut dan tenggara dalam radius 5 km.",
     "radiusBahaya": 5000,
     "warna": "#e8801f"
   },
@@ -25,7 +25,7 @@
     "status": "Siaga (Level III)",
     "koordinat": [-8.108, 112.920],
     "waktuUpdate": "31 Oktober 2026",
-    "visual": "Mengalami puluhan gempa letusan. Dilarang melakukan aktivitas apapun hingga radius 13 kilometer dari puncak.",
+    "visual": "Mengalami puluhan gempa letusan. Dilarang melakukan aktivitas apapun hingga radius 13 km dari puncak.",
     "radiusBahaya": 13000,
     "warna": "#e8801f"
   },
@@ -130,6 +130,126 @@
     "warna": "#d9b72b"
   },
   {
+    "id": "ibu",
+    "nama": "Ibu",
+    "status": "Waspada (Level II)",
+    "koordinat": [1.488, 127.630],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Erupsi kecil terus-menerus dari kawah aktif. Kolom abu setinggi 200–800 m teramati.",
+    "radiusBahaya": 2000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "ili-lewotolok",
+    "nama": "Ili Lewotolok",
+    "status": "Waspada (Level II)",
+    "koordinat": [-8.274, 123.504],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap kawah kelabu tebal teramati. Gempa embusan masih berlangsung.",
+    "radiusBahaya": 2000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "kerinci",
+    "nama": "Kerinci",
+    "status": "Waspada (Level II)",
+    "koordinat": [-1.697, 101.264],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap kawah berwarna putih hingga kelabu teramati. Aktivitas kegempaan vulkanik dalam batas Waspada.",
+    "radiusBahaya": 3000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "marapi",
+    "nama": "Marapi",
+    "status": "Waspada (Level II)",
+    "koordinat": [-0.381, 100.474],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Erupsi freatik berulang. Zona berbahaya 4,5 km dari kawah Verbeek.",
+    "radiusBahaya": 4500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "tangkuban-parahu",
+    "nama": "Tangkuban Parahu",
+    "status": "Waspada (Level II)",
+    "koordinat": [-6.770, 107.600],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap belerang teramati di kawah Ratu. Pengunjung dilarang mendekati tepi kawah.",
+    "radiusBahaya": 500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "lokon",
+    "nama": "Lokon",
+    "status": "Waspada (Level II)",
+    "koordinat": [1.358, 124.792],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas fumarolik di kawah Tompaluan. Gempa vulkanik dalam terekam periodik.",
+    "radiusBahaya": 1500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "soputan",
+    "nama": "Soputan",
+    "status": "Waspada (Level II)",
+    "koordinat": [1.112, 124.737],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap kawah putih tipis teramati. Gempa tektonik lokal dan vulkanik dalam masih berlangsung.",
+    "radiusBahaya": 1500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "ruang",
+    "nama": "Ruang",
+    "status": "Waspada (Level II)",
+    "koordinat": [2.303, 125.367],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas vulkanik naik pasca erupsi. Zona merah 2 km dari kawah masih diberlakukan.",
+    "radiusBahaya": 2000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "karangetang",
+    "nama": "Karangetang",
+    "status": "Waspada (Level II)",
+    "koordinat": [2.781, 125.407],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aliran lava pijar di beberapa sungai. Warga dilarang beraktivitas di sektor selatan dan timur.",
+    "radiusBahaya": 2500,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "kelud",
+    "nama": "Kelud",
+    "status": "Waspada (Level II)",
+    "koordinat": [-7.930, 112.308],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas kegempaan tektonik lokal terekam. Kondisi kawah dalam pemantauan ketat.",
+    "radiusBahaya": 1000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "papandayan",
+    "nama": "Papandayan",
+    "status": "Waspada (Level II)",
+    "koordinat": [-7.319, 107.731],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Fumarol aktif di kawah Mas dan kawah Baru. Tercium bau belerang di sekitar kawah.",
+    "radiusBahaya": 1000,
+    "warna": "#d9b72b"
+  },
+  {
+    "id": "ijen",
+    "nama": "Ijen",
+    "status": "Waspada (Level II)",
+    "koordinat": [-8.058, 114.242],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Gas SO2 terukur di atas ambang normal. Pendaki dilarang turun ke dasar kawah.",
+    "radiusBahaya": 1000,
+    "warna": "#d9b72b"
+  },
+  {
     "id": "slamet",
     "nama": "Slamet",
     "status": "Normal (Level I)",
@@ -155,7 +275,7 @@
     "status": "Normal (Level I)",
     "koordinat": [-8.343, 115.508],
     "waktuUpdate": "31 Oktober 2026",
-    "visual": "Asap kawah nihil. Tingkat kegempaan berada pada batas dasar (baseline).",
+    "visual": "Asap kawah nihil. Tingkat kegempaan berada pada batas dasar.",
     "radiusBahaya": 0,
     "warna": "#3f9b5f"
   },
@@ -176,6 +296,376 @@
     "koordinat": [-6.892, 108.400],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Gunung terlihat jelas hingga tertutup kabut. Tidak ada laporan aktivitas anomali.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "tambora",
+    "nama": "Tambora",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.250, 117.994],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi visual tenang. Aktivitas seismik dalam batas normal.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "rinjani",
+    "nama": "Rinjani",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.412, 116.470],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap putih tipis dari Gunung Baru Jari. Tidak ada peningkatan aktivitas yang signifikan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "raung",
+    "nama": "Raung",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.125, 114.042],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi kawah normal. Asap putih tipis teramati sesekali.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "guntur",
+    "nama": "Guntur",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.142, 107.837],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas fumarol rendah. Tidak terekam gempa vulkanik yang berarti.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "galunggung",
+    "nama": "Galunggung",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.250, 108.058],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Aktivitas kegempaan sangat rendah.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "krakatau",
+    "nama": "Krakatau",
+    "status": "Normal (Level I)",
+    "koordinat": [-6.103, 105.425],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kawasan di tengah laut. Dipantau melalui seismik.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "dieng",
+    "nama": "Dieng",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.199, 109.912],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kawah Timbang dalam kondisi normal. Konsentrasi gas CO2 dipantau rutin.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "egon",
+    "nama": "Egon",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.673, 122.454],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Tidak ada laporan perubahan aktivitas.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "ile-api",
+    "nama": "Ile Api",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.496, 123.489],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Fumarol aktif di kawah tetapi dalam batas aman. Tidak ada gempa vulkanik berarti.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "paluweh",
+    "nama": "Paluweh",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.320, 121.708],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap putih tipis teramati dari puncak. Gempa tektonik lokal sesekali terekam.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "lamongan",
+    "nama": "Lamongan",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.982, 113.343],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi visual tenang. Tidak ada peningkatan aktivitas tercatat.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "welirang",
+    "nama": "Welirang",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.642, 112.575],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Fumarol aktif tetapi stabil. Penambangan belerang berjalan normal.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "mahawu",
+    "nama": "Mahawu",
+    "status": "Normal (Level I)",
+    "koordinat": [1.358, 124.858],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi kawah tenang. Tidak ada anomali seismik yang tercatat.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "ambang",
+    "nama": "Ambang",
+    "status": "Normal (Level I)",
+    "koordinat": [0.758, 124.425],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap putih tipis dari kawah. Aktivitas seismik berada di batas bawah normal.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "rokatenda",
+    "nama": "Rokatenda",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.617, 121.706],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Tidak ada aktivitas erupsi. Kondisi stabil dalam pemantauan PVMBG.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "ebulobo",
+    "nama": "Ebulobo",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.808, 121.191],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Pemantauan rutin berjalan normal. Tidak ada indikasi peningkatan aktivitas.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "inielika",
+    "nama": "Inielika",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.730, 120.991],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Tidak ada laporan dari pos pengamatan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "inierie",
+    "nama": "Inierie",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.876, 120.918],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi visual normal. Pengamatan berjalan rutin.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "sirung",
+    "nama": "Sirung",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.508, 124.148],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kawah berair. Aktivitas fumarolik dalam batas normal.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "sangeang-api",
+    "nama": "Sangeang Api",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.200, 119.070],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Fumarol aktif di puncak. Tidak ada erupsi eksplosif terdeteksi.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "ile-werung",
+    "nama": "Ile Werung",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.553, 123.574],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Tidak ada anomali di kawah.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "batutara",
+    "nama": "Batutara",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.792, 123.577],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Pulau vulkanik di Laut Flores. Pemantauan dari kejauhan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "kelimutu",
+    "nama": "Kelimutu",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.770, 121.820],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Ketiga danau kawah dalam kondisi stabil. Warna air tidak berubah signifikan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "gamkonora",
+    "nama": "Gamkonora",
+    "status": "Normal (Level I)",
+    "koordinat": [1.379, 127.524],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Kegempaan dalam batas normal.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "tidore",
+    "nama": "Tidore",
+    "status": "Normal (Level I)",
+    "koordinat": [0.657, 127.402],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi visual normal. Tidak ada peningkatan aktivitas tercatat.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "makian",
+    "nama": "Makian",
+    "status": "Normal (Level I)",
+    "koordinat": [0.322, 127.401],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi stabil. Pemantauan seismik rutin.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "talang",
+    "nama": "Talang",
+    "status": "Normal (Level I)",
+    "koordinat": [-0.978, 100.679],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Asap putih tipis dari kawah. Tidak ada peningkatan aktivitas signifikan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "sorikmarapi",
+    "nama": "Sorik Marapi",
+    "status": "Normal (Level I)",
+    "koordinat": [0.683, 99.539],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Aktivitas fumarolik normal. Tidak ada gempa vulkanik berarti.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "marore",
+    "nama": "Marore",
+    "status": "Normal (Level I)",
+    "koordinat": [4.775, 125.484],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi normal. Pemantauan berjalan rutin.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "karangetang-b",
+    "nama": "Banua Wuhu",
+    "status": "Normal (Level I)",
+    "koordinat": [3.138, 125.491],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Gunung api bawah laut di utara Sulawesi. Dipantau dari permukaan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "ternate",
+    "nama": "Gamalama (Ternate)",
+    "status": "Normal (Level I)",
+    "koordinat": [0.804, 127.332],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Asap kawah tidak teramati.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "wurlali",
+    "nama": "Wurlali",
+    "status": "Normal (Level I)",
+    "koordinat": [-7.125, 128.680],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Tidak ada rekaman kegempaan vulkanik signifikan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "teon",
+    "nama": "Teon",
+    "status": "Normal (Level I)",
+    "koordinat": [-6.916, 129.125],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi normal. Pemantauan berkala berjalan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "nila",
+    "nama": "Nila",
+    "status": "Normal (Level I)",
+    "koordinat": [-6.730, 129.498],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Tidak ada laporan aktivitas anomali. Status stabil.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "serua",
+    "nama": "Serua",
+    "status": "Normal (Level I)",
+    "koordinat": [-6.300, 130.005],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Kondisi tenang. Tidak ada perubahan aktivitas dari baseline.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "manuk",
+    "nama": "Manuk",
+    "status": "Normal (Level I)",
+    "koordinat": [-5.534, 130.298],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Pulau vulkanik aktif. Pemantauan dilakukan dari kejauhan.",
+    "radiusBahaya": 0,
+    "warna": "#3f9b5f"
+  },
+  {
+    "id": "lewotolo",
+    "nama": "Lewotolo",
+    "status": "Normal (Level I)",
+    "koordinat": [-8.272, 123.507],
+    "waktuUpdate": "31 Oktober 2026",
+    "visual": "Status normal. Pemantauan instrumen berjalan rutin.",
     "radiusBahaya": 0,
     "warna": "#3f9b5f"
   }
