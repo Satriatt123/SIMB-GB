@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import PageHeader from '../component/PageHeader.jsx';
 
 const FOTO = {
-  erupsi: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Merapi_2010_wedjo.jpg/1280px-Merapi_2010_wedjo.jpg',
-  kawah: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Kawah_Ijen_Volcano_Blue_Fire_Ijen_Crater%2C_Banyuwangi%2C_East_Java%2C_Indonesia.jpg/1280px-Kawah_Ijen_Volcano_Blue_Fire_Ijen_Crater%2C_Banyuwangi%2C_East_Java%2C_Indonesia.jpg',
-  lava: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Pahoeoe_fountain_original.jpg/1280px-Pahoeoe_fountain_original.jpg',
+  erupsi: '/asset/erupsi.jpg',
+  kawah: '/asset/kawah.jpg',
+  lava: '/asset/lava.jpg',
 };
 
 const FONT_CSS = `
