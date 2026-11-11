@@ -367,6 +367,47 @@ export default function PetaKRB() {
             </div>
           </div>
         </div>
+
+        <div className="mt-8 border-t border-[#343c41] pt-8">
+          <h3 className="simb-display text-xl text-[#f1efe8] mb-4">
+            Tingkat Aktivitas Gunung Api
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Level III */}
+            <div className="bg-[#1c2226] border border-[#343c41] p-5 rounded-md transition-colors hover:border-[#e8801f]">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#e8801f]/20 text-[#e8801f] font-bold">III</span>
+                <h4 className="font-semibold text-[#f1efe8]">Siaga</h4>
+              </div>
+              <p className="text-sm text-[#a9ada9] leading-relaxed">
+                Peningkatan aktivitas seismik dan vulkanik. Masyarakat di wilayah ancaman harus bersiap evakuasi.
+              </p>
+            </div>
+
+            {/* Level II */}
+            <div className="bg-[#1c2226] border border-[#343c41] p-5 rounded-md transition-colors hover:border-[#d9b72b]">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d9b72b]/20 text-[#d9b72b] font-bold">II</span>
+                <h4 className="font-semibold text-[#f1efe8]">Waspada</h4>
+              </div>
+              <p className="text-sm text-[#a9ada9] leading-relaxed">
+                Ada aktivitas di atas level normal. Potensi ancaman bahaya masih terbatas di sekitar area kawah.
+              </p>
+            </div>
+
+            {/* Level I */}
+            <div className="bg-[#1c2226] border border-[#343c41] p-5 rounded-md transition-colors hover:border-[#3f9b5f]">
+              <div className="flex items-center gap-3 mb-3">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#3f9b5f]/20 text-[#3f9b5f] font-bold">I</span>
+                <h4 className="font-semibold text-[#f1efe8]">Normal</h4>
+              </div>
+              <p className="text-sm text-[#a9ada9] leading-relaxed">
+                Tidak ada gejala aktivitas tekanan magma yang signifikan. Aman untuk aktivitas di luar kawah.
+              </p>
+            </div>
+          </div>
+        </div>
+
       </div>
     </>
   );
