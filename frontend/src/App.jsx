@@ -6,7 +6,7 @@ import PetaKRB from './pages/PetaKRB.jsx';
 import PusatMitigasi from './pages/PusatMitigasi.jsx';
 import Ensiklo from './pages/Ensiklo.jsx';
 import AboutUs from './pages/AboutUs.jsx';
-import GunungDetail from './pages/GunungDetail.jsx';
+import GunungDetail from './pages/GunungDetail';
 import Footer from './component/Footer.jsx';
 
 const FONT_CSS = `
