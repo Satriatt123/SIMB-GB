@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
 import { BrowserRouter, Routes, Route, Link, NavLink, useLocation } from 'react-router-dom';
 import Beranda from './pages/Beranda.jsx';
 import PetaKRB from './pages/PetaKRB.jsx';
 import PusatMitigasi from './pages/PusatMitigasi.jsx';
 import Ensiklo from './pages/Ensiklo.jsx';
 import AboutUs from './pages/AboutUs.jsx';
+import GunungDetail from './pages/GunungDetail.jsx';
 import Footer from './component/Footer.jsx';
 
 const FONT_CSS = `
@@ -114,7 +115,9 @@ function Nav() {
                   end={item.end}
                   className={({ isActive }) =>
                     `py-3.5 text-lg border-b border-[#343c41] ${
-                      isActive ? 'text-[#f1efe8] font-semibold' : 'text-[#c4c6c1]'
+                      isActive
+                        ? 'border-l-2 border-l-[#d9651b] pl-3 text-[#f1efe8] font-semibold'
+                        : 'text-[#c4c6c1]'
                     } ${focusRing}`
                   }
                 >
@@ -129,6 +132,32 @@ function Nav() {
   );
 }
 
+function AnimatedRoutes() {
+  const location = useLocation();
+  const reduce = useReducedMotion();
+
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.div
+        key={location.pathname}
+        initial={{ opacity: 0, y: reduce ? 0 : 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: reduce ? 0 : -4 }}
+        transition={{ duration: reduce ? 0 : 0.25, ease: [0.25, 0.1, 0.25, 1] }}
+      >
+        <Routes location={location}>
+          <Route path="/" element={<Beranda />} />
+          <Route path="/ensiklo" element={<Ensiklo />} />
+          <Route path="/peta" element={<PetaKRB />} />
+          <Route path="/gunung/:id" element={<GunungDetail />} />
+          <Route path="/mitigasi" element={<PusatMitigasi />} />
+          <Route path="/tentang" element={<AboutUs />} />
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -137,13 +166,7 @@ export default function App() {
 
         <Nav />
 
-        <Routes>
-          <Route path="/" element={<Beranda />} />
-          <Route path="/ensiklo" element={<Ensiklo />} />
-          <Route path="/peta" element={<PetaKRB />} />
-          <Route path="/mitigasi" element={<PusatMitigasi />} />
-          <Route path="/tentang" element={<AboutUs />} />
-        </Routes>
+        <AnimatedRoutes />
 
         <Footer />
       </div>

@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Search, MapPin, ChevronDown } from 'lucide-react';
+import { Search, MapPin, ChevronDown, Crosshair } from 'lucide-react';
 import PageHeader from '../component/PageHeader.jsx';
 import { MapContainer, TileLayer, Marker, Popup, Circle, useMap } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
-import dataGunung from '../data/gunung.json';
+import { fetchMagmaRealtimeData } from '../services/magmaApi.js';
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({ iconUrl: '', shadowUrl: '', iconRetinaUrl: '' });
@@ -63,11 +64,36 @@ function buatIcon(warna, aktif, pulse) {
 const focusRing =
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dcd9d0]';
 
+function jarakKm([lat1, lon1], [lat2, lon2]) {
+  const R = 6371;
+  const rad = (d) => (d * Math.PI) / 180;
+  const dLat = rad(lat2 - lat1);
+  const dLon = rad(lon2 - lon1);
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(rad(lat1)) * Math.cos(rad(lat2)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+
+const ikonLokasi = L.divIcon({
+  className: '',
+  html: '<span style="display:block;width:14px;height:14px;border-radius:50%;background:#3b82f6;border:2px solid #fff;box-shadow:0 0 0 4px rgba(59,130,246,0.3)"></span>',
+  iconSize: [14, 14],
+  iconAnchor: [7, 7],
+});
+
 const LEVEL_ORDER = [
   { nama: 'Awas', warna: '#d6322c', romawi: 'IV' },
   { nama: 'Siaga', warna: '#e8801f', romawi: 'III' },
   { nama: 'Waspada', warna: '#d9b72b', romawi: 'II' },
   { nama: 'Normal', warna: '#3f9b5f', romawi: 'I' },
+];
+
+const WILAYAH_FILTER = [
+  { label: 'Semua Wilayah', value: null, bounds: null },
+  { label: 'Sumatra', value: 'Sumatra', bounds: [[-6, 95], [6, 108]] },
+  { label: 'Jawa & Bali', value: 'Jawa-Bali', bounds: [[-9, 105], [-5, 116]] },
+  { label: 'Nusa Tenggara', value: 'Nusa Tenggara', bounds: [[-10, 115], [-5, 126]] },
+  { label: 'Sulawesi', value: 'Sulawesi', bounds: [[-5, 118], [4, 128]] },
+  { label: 'Maluku & Papua', value: 'Maluku-Papua', bounds: [[-8, 124], [4, 141]] },
 ];
 
 function MapUpdater({ koordinat }) {
@@ -80,18 +106,46 @@ function MapUpdater({ koordinat }) {
   return null;
 }
 
+function WilayahUpdater({ bounds }) {
+  const map = useMap();
+  useEffect(() => {
+    if (bounds) {
+      map.flyToBounds(bounds, { padding: [40, 40], duration: 1.2 });
+    } else {
+      map.flyTo([-2.5489, 118.0149], 5, { duration: 1.2 });
+    }
+  }, [bounds, map]);
+  return null;
+}
+
 export default function PetaKRB() {
   const [daftarGunung, setDaftarGunung] = useState([]);
   const [selectedVolcano, setSelectedVolcano] = useState(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [openLevel, setOpenLevel] = useState('Siaga');
+  const [filterWilayah, setFilterWilayah] = useState(null);
+  const [lokasi, setLokasi] = useState(null);
+  const [terdekat, setTerdekat] = useState([]);
+  const [dalamRadius, setDalamRadius] = useState([]);
+  const [geo, setGeo] = useState('diam');
 
   useEffect(() => {
-    setDaftarGunung(dataGunung);
-    setSelectedVolcano(dataGunung[0]);
-    setLoading(false);
+    document.title = 'Peta KRB | SIMB-GB';
   }, []);
+
+  useEffect(() => {
+    fetchMagmaRealtimeData().then((data) => {
+      setDaftarGunung(data);
+      setSelectedVolcano(data[0] ?? null);
+      setLoading(false);
+    });
+  }, []);
+
+  const gunungTerfilter = useMemo(() => {
+    if (!filterWilayah) return daftarGunung;
+    return daftarGunung.filter((g) => g.pulau === filterWilayah);
+  }, [daftarGunung, filterWilayah]);
 
   const searchResults = useMemo(() => {
     if (!searchQuery.trim()) return [];
@@ -103,20 +157,68 @@ export default function PetaKRB() {
   const grouped = useMemo(() => {
     return LEVEL_ORDER.map((level) => ({
       ...level,
-      gunung: daftarGunung.filter((g) => g.status.startsWith(level.nama)),
+      gunung: gunungTerfilter.filter((g) => g.status.startsWith(level.nama)),
     })).filter((l) => l.gunung.length > 0);
-  }, [daftarGunung]);
+  }, [gunungTerfilter]);
+
+  const statWilayah = useMemo(() => {
+    return LEVEL_ORDER.map((l) => ({
+      ...l,
+      jumlah: gunungTerfilter.filter((g) => g.status.startsWith(l.nama)).length,
+    }));
+  }, [gunungTerfilter]);
 
   const handleSelectVolcano = (gunung) => {
     setSelectedVolcano(gunung);
     setSearchQuery('');
   };
 
+  const cariTerdekat = () => {
+    if (!navigator.geolocation) {
+      setGeo('gagal');
+      return;
+    }
+    setGeo('memuat');
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const titik = [pos.coords.latitude, pos.coords.longitude];
+        const urut = daftarGunung
+          .map((g) => ({ gunung: g, jarak: jarakKm(titik, g.koordinat) }))
+          .sort((a, b) => a.jarak - b.jarak);
+        setLokasi(titik);
+        setTerdekat(urut.slice(0, 3));
+        setDalamRadius(urut.filter((u) => u.gunung.radiusBahaya > 0 && u.jarak * 1000 <= u.gunung.radiusBahaya));
+        setGeo('ok');
+        if (urut[0]) setSelectedVolcano(urut[0].gunung);
+      },
+      () => setGeo('gagal'),
+      { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
+    );
+  };
+
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-[60vh] text-[#a9ada9]">
-        Memuat peta…
-      </div>
+      <>
+        <PageHeader
+          title="Peta Kawasan Rawan Bencana"
+          description="Pemantauan radius bahaya, zona steril, dan level siaga gunung api secara interaktif."
+        />
+        <div className="px-6 lg:px-12 xl:px-16 py-10 lg:py-16 max-w-[1920px] mx-auto w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-[22rem_1fr] gap-8">
+            {/* Skeleton sidebar */}
+            <aside className="flex flex-col gap-5">
+              <div className="h-11 rounded-md bg-[#232a2f] animate-pulse" />
+              <div className="border-t border-[#343c41] pt-5 flex flex-col gap-3">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="h-14 rounded bg-[#232a2f] animate-pulse" style={{ animationDelay: `${i * 0.1}s` }} />
+                ))}
+              </div>
+            </aside>
+            {/* Skeleton peta */}
+            <div className="h-[550px] lg:h-[calc(100vh-12rem)] min-h-[500px] rounded-md bg-[#232a2f] animate-pulse" />
+          </div>
+        </div>
+      </>
     );
   }
 
@@ -131,6 +233,44 @@ export default function PetaKRB() {
       <div className="px-6 lg:px-12 xl:px-16 py-10 lg:py-16 max-w-[1920px] mx-auto w-full">
         <div className="grid grid-cols-1 lg:grid-cols-[22rem_1fr] gap-8">
           <aside className="flex flex-col gap-6">
+            {/* ── Filter Wilayah ── */}
+            <div>
+              <div className="flex items-center justify-between mb-2">
+                <p className="text-sm text-[#8a908d]">Filter wilayah</p>
+                <AnimatePresence>
+                  {filterWilayah && (
+                    <motion.button
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.9 }}
+                      transition={{ duration: 0.15 }}
+                      type="button"
+                      onClick={() => setFilterWilayah(null)}
+                      className={`text-xs text-[#d9651b] hover:text-[#e8742a] transition-colors ${focusRing}`}
+                    >
+                      Reset ✕
+                    </motion.button>
+                  )}
+                </AnimatePresence>
+              </div>
+              <div className="flex flex-wrap gap-1.5">
+                {WILAYAH_FILTER.map((w) => (
+                  <button
+                    key={w.value ?? 'semua'}
+                    type="button"
+                    onClick={() => setFilterWilayah(w.value)}
+                    className={`px-3 py-1.5 rounded text-xs font-medium transition-colors border ${focusRing} ${
+                      filterWilayah === w.value
+                        ? 'bg-[#d9651b] border-[#d9651b] text-white'
+                        : 'border-[#343c41] text-[#a9ada9] hover:border-[#5b666c] hover:text-[#dcd9d0]'
+                    }`}
+                  >
+                    {w.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="relative">
               <div className="relative">
                 <Search
@@ -171,6 +311,65 @@ export default function PetaKRB() {
                       </li>
                     ))}
                   </motion.ul>
+                )}
+              </AnimatePresence>
+            </div>
+
+            <div>
+              <button
+                type="button"
+                onClick={cariTerdekat}
+                disabled={geo === 'memuat'}
+                className={`inline-flex w-full items-center justify-center gap-2 rounded-md border border-[#f1efe8]/70 px-4 py-2.5 text-sm font-semibold text-[#f1efe8] transition-all hover:bg-[#f1efe8]/10 active:scale-[0.97] disabled:opacity-60 ${focusRing}`}
+              >
+                <Crosshair size={16} aria-hidden="true" />
+                {geo === 'memuat' ? 'Mencari lokasimu…' : 'Gunung terdekat dari lokasiku'}
+              </button>
+              <p className="mt-2 text-xs text-[#8a908d]">Lokasi hanya dipakai di browser dan tidak disimpan.</p>
+
+              {geo === 'gagal' && (
+                <p role="status" className="mt-2 text-sm text-[#d9b72b]">
+                  Lokasi tidak bisa dibaca. Periksa izin lokasi di browser, lalu coba lagi.
+                </p>
+              )}
+
+              <AnimatePresence>
+                {geo === 'ok' && terdekat.length > 0 && (
+                  <motion.div
+                    role="status"
+                    initial={{ opacity: 0, y: -4 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="mt-4"
+                  >
+                    {dalamRadius.length > 0 && (
+                      <p className="mb-3 border-l-2 border-[#d6322c] pl-3 text-sm leading-relaxed text-[#f1efe8]">
+                        Perkiraan lokasimu berada di dalam radius bahaya {dalamRadius.map((u) => u.gunung.nama).join(', ')}.
+                        Ikuti arahan BPBD setempat.
+                      </p>
+                    )}
+                    <p className="mb-1 text-sm text-[#8a908d]">Terdekat dari lokasimu</p>
+                    <ul className="m-0 list-none p-0">
+                      {terdekat.map(({ gunung, jarak }) => (
+                        <li key={gunung.id} className="border-t border-[#343c41] last:border-b">
+                          <button
+                            type="button"
+                            onClick={() => handleSelectVolcano(gunung)}
+                            className={`flex w-full items-baseline justify-between gap-3 py-2.5 text-left transition-colors hover:bg-[#f1efe8]/5 ${focusRing}`}
+                          >
+                            <span>
+                              <span className="font-semibold text-[#f1efe8]">{gunung.nama}</span>
+                              <span className="ml-2 text-sm" style={{ color: gunung.warna }}>
+                                {gunung.status.split(' ')[0]}
+                              </span>
+                            </span>
+                            <span className="simb-num text-[#a9ada9]">{Math.round(jarak).toLocaleString('id-ID')} km</span>
+                          </button>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
                 )}
               </AnimatePresence>
             </div>
@@ -220,6 +419,13 @@ export default function PetaKRB() {
                       <span className="text-[#8a908d]">{selectedVolcano.waktuUpdate}</span>
                     </li>
                   </ul>
+
+                  <Link
+                    to={`/gunung/${selectedVolcano.id}`}
+                    className={`mt-5 inline-flex items-center rounded-md border border-[#f1efe8]/70 px-5 py-2.5 text-sm font-semibold text-[#f1efe8] transition-all hover:bg-[#f1efe8]/10 active:scale-[0.97] ${focusRing}`}
+                  >
+                    Lihat detail →
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -235,6 +441,11 @@ export default function PetaKRB() {
                       className={`w-full flex items-center justify-between py-3 text-left transition-colors hover:text-[#f1efe8] ${focusRing}`}
                     >
                       <span className="flex items-center gap-3">
+                        <span
+                          aria-hidden="true"
+                          className="block h-2 w-2 shrink-0 rounded-full"
+                          style={{ background: level.warna }}
+                        />
                         <span className="simb-num text-lg" style={{ color: level.warna }}>
                           {level.romawi}
                         </span>
@@ -306,8 +517,10 @@ export default function PetaKRB() {
               />
 
               {selectedVolcano && <MapUpdater koordinat={selectedVolcano.koordinat} />}
+              <WilayahUpdater bounds={WILAYAH_FILTER.find((w) => w.value === filterWilayah)?.bounds ?? null} />
+              {lokasi && <Marker position={lokasi} icon={ikonLokasi} interactive={false} />}
 
-              {daftarGunung.map((gunung) => {
+              {gunungTerfilter.map((gunung) => {
                 const aktif = selectedVolcano?.id === gunung.id;
                 const pulse = gunung.status.startsWith('Siaga') || gunung.status.startsWith('Awas');
                 return (
@@ -339,6 +552,10 @@ export default function PetaKRB() {
                         {gunung.radiusBahaya > 0 && (
                           <><br /><span style={{ color: '#888' }}>Radius: {gunung.radiusBahaya / 1000} km</span></>
                         )}
+                        <br />
+                        <Link to={`/gunung/${gunung.id}`} style={{ color: '#d9651b', fontWeight: 600 }}>
+                          Detail →
+                        </Link>
                       </Popup>
                     </Marker>
                   </React.Fragment>
@@ -346,34 +563,63 @@ export default function PetaKRB() {
               })}
             </MapContainer>
 
-            <div className="absolute bottom-4 right-4 bg-[#1c2226]/90 border border-[#343c41] rounded-md px-4 py-3 z-[1000] text-sm">
-              <h4 className="font-semibold text-[#f1efe8] mb-2 pb-2 border-b border-[#343c41]">
-                Zona bahaya
-              </h4>
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center gap-2.5 text-[#dcd9d0]">
-                  <span className="w-3 h-3 rounded-full bg-[#d6322c]" />
-                  KRB III — terdekat kawah
-                </div>
-                <div className="flex items-center gap-2.5 text-[#dcd9d0]">
-                  <span className="w-3 h-3 rounded-full bg-[#d9b72b]" />
-                  KRB II — zona tengah
-                </div>
-                <div className="flex items-center gap-2.5 text-[#dcd9d0]">
-                  <span className="w-3 h-3 rounded-full bg-[#3f9b5f]" />
-                  KRB I — zona luar
-                </div>
-              </div>
+            <div className="absolute bottom-4 right-4 z-[1000] max-w-[16rem] rounded-md border border-[#343c41] bg-[#1c2226]/90 px-4 py-3 text-sm">
+              <h4 className="mb-2 border-b border-[#343c41] pb-2 font-semibold text-[#f1efe8]">Keterangan peta</h4>
+              <p className="mb-1.5 text-xs text-[#8a908d]">Warna lingkaran = status gunung</p>
+              <ul className="m-0 mb-3 flex list-none flex-wrap gap-x-3 gap-y-1 p-0">
+                {LEVEL_ORDER.map((l) => (
+                  <li key={l.nama} className="flex items-center gap-1.5 text-[#dcd9d0]">
+                    <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full" style={{ background: l.warna }} />
+                    {l.nama}
+                  </li>
+                ))}
+              </ul>
+              <ul className="m-0 flex list-none flex-col gap-1.5 border-t border-[#343c41] p-0 pt-3">
+                <li className="flex items-center gap-2.5 text-[#dcd9d0]">
+                  <span aria-hidden="true" className="h-3 w-3 shrink-0 rounded-full border-2 border-[#dcd9d0]" />
+                  Radius bahaya (PVMBG)
+                </li>
+                <li className="flex items-center gap-2.5 text-[#dcd9d0]">
+                  <span aria-hidden="true" className="h-3 w-3 shrink-0 rounded-full border border-dashed border-[#dcd9d0]" />
+                  Area sekitar, 2,5× radius (ilustrasi)
+                </li>
+              </ul>
+              <p className="mt-3 text-xs leading-snug text-[#8a908d]">Batas resmi KRB I–III ada di peta PVMBG.</p>
             </div>
           </div>
         </div>
 
         <div className="mt-8 border-t border-[#343c41] pt-8">
-          <h3 className="simb-display text-xl text-[#f1efe8] mb-4">
-            Tingkat Aktivitas Gunung Api
-          </h3>
+          <div className="flex items-baseline justify-between mb-6 flex-wrap gap-3">
+            <h3 className="simb-display text-xl text-[#f1efe8]">
+              Statistik{filterWilayah ? ` — ${filterWilayah.replace('-', ' & ')}` : ' Nasional'}
+            </h3>
+            <p className="text-sm text-[#8a908d]">
+              {gunungTerfilter.length} gunung api dipantau
+            </p>
+          </div>
+
+          {/* Panel statistik per level */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+            {statWilayah.map((l) => (
+              <div
+                key={l.nama}
+                className="border border-[#343c41] rounded-md p-4"
+                style={{ borderLeftColor: l.warna, borderLeftWidth: '3px' }}
+              >
+                <p className="simb-num text-4xl leading-none text-[#f1efe8]">{l.jumlah}</p>
+                <p className="mt-2 text-sm font-semibold" style={{ color: l.warna }}>{l.nama}</p>
+                <p className="simb-num text-xs text-[#5b666c] mt-1">
+                  {gunungTerfilter.length > 0
+                    ? `${Math.round((l.jumlah / gunungTerfilter.length) * 100)}%`
+                    : '—'}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          {/* Penjelasan level */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Level III */}
             <div className="bg-[#1c2226] border border-[#343c41] p-5 rounded-md transition-colors hover:border-[#e8801f]">
               <div className="flex items-center gap-3 mb-3">
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#e8801f]/20 text-[#e8801f] font-bold">III</span>
@@ -383,8 +629,6 @@ export default function PetaKRB() {
                 Peningkatan aktivitas seismik dan vulkanik. Masyarakat di wilayah ancaman harus bersiap evakuasi.
               </p>
             </div>
-
-            {/* Level II */}
             <div className="bg-[#1c2226] border border-[#343c41] p-5 rounded-md transition-colors hover:border-[#d9b72b]">
               <div className="flex items-center gap-3 mb-3">
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#d9b72b]/20 text-[#d9b72b] font-bold">II</span>
@@ -394,8 +638,6 @@ export default function PetaKRB() {
                 Ada aktivitas di atas level normal. Potensi ancaman bahaya masih terbatas di sekitar area kawah.
               </p>
             </div>
-
-            {/* Level I */}
             <div className="bg-[#1c2226] border border-[#343c41] p-5 rounded-md transition-colors hover:border-[#3f9b5f]">
               <div className="flex items-center gap-3 mb-3">
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#3f9b5f]/20 text-[#3f9b5f] font-bold">I</span>

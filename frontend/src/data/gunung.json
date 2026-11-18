@@ -3,670 +3,938 @@
     "id": "anak-krakatau",
     "nama": "Anak Krakatau",
     "status": "Siaga (Level III)",
-    "koordinat": [-6.102, 105.423],
+    "koordinat": [
+      -6.102,
+      105.423
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Erupsi masih berlangsung. Dilarang mendekati pulau baru di sektor barat laut dan tenggara dalam radius 5 km.",
     "radiusBahaya": 5000,
-    "warna": "#e8801f"
+    "warna": "#e8801f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "merapi",
     "nama": "Merapi",
     "status": "Siaga (Level III)",
-    "koordinat": [-7.540, 110.446],
+    "koordinat": [
+      -7.54,
+      110.446
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Awan panas guguran berpotensi terjadi sewaktu-waktu. Terdapat potensi bahaya lahar hujan di hulu sungai saat hujan deras.",
     "radiusBahaya": 7000,
-    "warna": "#e8801f"
+    "warna": "#e8801f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "semeru",
     "nama": "Semeru",
     "status": "Siaga (Level III)",
-    "koordinat": [-8.108, 112.920],
+    "koordinat": [
+      -8.108,
+      112.92
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Mengalami puluhan gempa letusan. Dilarang melakukan aktivitas apapun hingga radius 13 km dari puncak.",
     "radiusBahaya": 13000,
-    "warna": "#e8801f"
+    "warna": "#e8801f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "sinabung",
     "nama": "Sinabung",
     "status": "Siaga (Level III)",
-    "koordinat": [3.170, 98.392],
+    "koordinat": [
+      3.17,
+      98.392
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas vulkanik masih tinggi. Terdapat potensi awan panas dan guguran lava pijar.",
     "radiusBahaya": 5000,
-    "warna": "#e8801f"
+    "warna": "#e8801f",
+    "pulau": "Sumatra"
   },
   {
     "id": "lewotobi",
     "nama": "Lewotobi Laki-laki",
     "status": "Siaga (Level III)",
-    "koordinat": [-8.538, 122.778],
+    "koordinat": [
+      -8.538,
+      122.778
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Pemantauan visual dan instrumental menunjukkan aktivitas vulkanik yang tinggi di area kawah utama.",
     "radiusBahaya": 4000,
-    "warna": "#e8801f"
+    "warna": "#e8801f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "bromo",
     "nama": "Bromo",
     "status": "Waspada (Level II)",
-    "koordinat": [-7.942, 112.950],
+    "koordinat": [
+      -7.942,
+      112.95
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap kawah bertekanan lemah berwarna putih teramati dengan intensitas tipis hingga sedang.",
     "radiusBahaya": 1000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "dukono",
     "nama": "Dukono",
     "status": "Waspada (Level II)",
-    "koordinat": [1.693, 127.894],
+    "koordinat": [
+      1.693,
+      127.894
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Teramati hembusan asap kawah berwarna putih hingga kelabu tebal.",
     "radiusBahaya": 2000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "gamalama",
     "nama": "Gamalama",
     "status": "Waspada (Level II)",
-    "koordinat": [0.800, 127.330],
+    "koordinat": [
+      0.8,
+      127.33
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas kegempaan didominasi oleh gempa tektonik jauh dan gempa hembusan.",
     "radiusBahaya": 1500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "awu",
     "nama": "Awu",
     "status": "Waspada (Level II)",
-    "koordinat": [3.682, 125.456],
+    "koordinat": [
+      3.682,
+      125.456
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Gunung api terlihat jelas hingga tertutup kabut. Asap kawah tidak teramati.",
     "radiusBahaya": 3000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sulawesi"
   },
   {
     "id": "banda-api",
     "nama": "Banda Api",
     "status": "Waspada (Level II)",
-    "koordinat": [-4.525, 129.871],
+    "koordinat": [
+      -4.525,
+      129.871
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi visual normal, namun terekam peningkatan gempa vulkanik dangkal.",
     "radiusBahaya": 1000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "dempo",
     "nama": "Dempo",
     "status": "Waspada (Level II)",
-    "koordinat": [-4.030, 103.130],
+    "koordinat": [
+      -4.03,
+      103.13
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Pendaki dilarang mendekati kawah utama karena potensi gas beracun.",
     "radiusBahaya": 1000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sumatra"
   },
   {
     "id": "burnitelong",
     "nama": "Bur Ni Telong",
     "status": "Waspada (Level II)",
-    "koordinat": [4.760, 96.820],
+    "koordinat": [
+      4.76,
+      96.82
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas vulkanik berfluktuasi. Masyarakat diimbau tetap waspada.",
     "radiusBahaya": 1500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sumatra"
   },
   {
     "id": "anak-ranakah",
     "nama": "Anak Ranakah",
     "status": "Waspada (Level II)",
-    "koordinat": [-8.620, 120.520],
+    "koordinat": [
+      -8.62,
+      120.52
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Terlihat asap putih tipis dari puncak kawah. Tingkat aktivitas di atas normal.",
     "radiusBahaya": 1500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "ibu",
     "nama": "Ibu",
     "status": "Waspada (Level II)",
-    "koordinat": [1.488, 127.630],
+    "koordinat": [
+      1.488,
+      127.63
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Erupsi kecil terus-menerus dari kawah aktif. Kolom abu setinggi 200–800 m teramati.",
     "radiusBahaya": 2000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "ili-lewotolok",
     "nama": "Ili Lewotolok",
     "status": "Waspada (Level II)",
-    "koordinat": [-8.274, 123.504],
+    "koordinat": [
+      -8.274,
+      123.504
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap kawah kelabu tebal teramati. Gempa embusan masih berlangsung.",
     "radiusBahaya": 2000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "kerinci",
     "nama": "Kerinci",
     "status": "Waspada (Level II)",
-    "koordinat": [-1.697, 101.264],
+    "koordinat": [
+      -1.697,
+      101.264
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap kawah berwarna putih hingga kelabu teramati. Aktivitas kegempaan vulkanik dalam batas Waspada.",
     "radiusBahaya": 3000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sumatra"
   },
   {
     "id": "marapi",
     "nama": "Marapi",
     "status": "Waspada (Level II)",
-    "koordinat": [-0.381, 100.474],
+    "koordinat": [
+      -0.381,
+      100.474
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Erupsi freatik berulang. Zona berbahaya 4,5 km dari kawah Verbeek.",
     "radiusBahaya": 4500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sumatra"
   },
   {
     "id": "tangkuban-parahu",
     "nama": "Tangkuban Parahu",
     "status": "Waspada (Level II)",
-    "koordinat": [-6.770, 107.600],
+    "koordinat": [
+      -6.77,
+      107.6
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap belerang teramati di kawah Ratu. Pengunjung dilarang mendekati tepi kawah.",
     "radiusBahaya": 500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "lokon",
     "nama": "Lokon",
     "status": "Waspada (Level II)",
-    "koordinat": [1.358, 124.792],
+    "koordinat": [
+      1.358,
+      124.792
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas fumarolik di kawah Tompaluan. Gempa vulkanik dalam terekam periodik.",
     "radiusBahaya": 1500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sulawesi"
   },
   {
     "id": "soputan",
     "nama": "Soputan",
     "status": "Waspada (Level II)",
-    "koordinat": [1.112, 124.737],
+    "koordinat": [
+      1.112,
+      124.737
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap kawah putih tipis teramati. Gempa tektonik lokal dan vulkanik dalam masih berlangsung.",
     "radiusBahaya": 1500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sulawesi"
   },
   {
     "id": "ruang",
     "nama": "Ruang",
     "status": "Waspada (Level II)",
-    "koordinat": [2.303, 125.367],
+    "koordinat": [
+      2.303,
+      125.367
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas vulkanik naik pasca erupsi. Zona merah 2 km dari kawah masih diberlakukan.",
     "radiusBahaya": 2000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sulawesi"
   },
   {
     "id": "karangetang",
     "nama": "Karangetang",
     "status": "Waspada (Level II)",
-    "koordinat": [2.781, 125.407],
+    "koordinat": [
+      2.781,
+      125.407
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aliran lava pijar di beberapa sungai. Warga dilarang beraktivitas di sektor selatan dan timur.",
     "radiusBahaya": 2500,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Sulawesi"
   },
   {
     "id": "kelud",
     "nama": "Kelud",
     "status": "Waspada (Level II)",
-    "koordinat": [-7.930, 112.308],
+    "koordinat": [
+      -7.93,
+      112.308
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas kegempaan tektonik lokal terekam. Kondisi kawah dalam pemantauan ketat.",
     "radiusBahaya": 1000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "papandayan",
     "nama": "Papandayan",
     "status": "Waspada (Level II)",
-    "koordinat": [-7.319, 107.731],
+    "koordinat": [
+      -7.319,
+      107.731
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Fumarol aktif di kawah Mas dan kawah Baru. Tercium bau belerang di sekitar kawah.",
     "radiusBahaya": 1000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "ijen",
     "nama": "Ijen",
     "status": "Waspada (Level II)",
-    "koordinat": [-8.058, 114.242],
+    "koordinat": [
+      -8.058,
+      114.242
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Gas SO2 terukur di atas ambang normal. Pendaki dilarang turun ke dasar kawah.",
     "radiusBahaya": 1000,
-    "warna": "#d9b72b"
+    "warna": "#d9b72b",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "slamet",
     "nama": "Slamet",
     "status": "Normal (Level I)",
-    "koordinat": [-7.242, 109.208],
+    "koordinat": [
+      -7.242,
+      109.208
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Gunung api terlihat jelas. Tidak ada peningkatan aktivitas vulkanik yang signifikan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "gede",
     "nama": "Gede",
     "status": "Normal (Level I)",
-    "koordinat": [-6.780, 106.980],
+    "koordinat": [
+      -6.78,
+      106.98
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi aman untuk pendakian di luar radius kawah aktif.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "agung",
     "nama": "Agung",
     "status": "Normal (Level I)",
-    "koordinat": [-8.343, 115.508],
+    "koordinat": [
+      -8.343,
+      115.508
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap kawah nihil. Tingkat kegempaan berada pada batas dasar.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "batur",
     "nama": "Batur",
     "status": "Normal (Level I)",
-    "koordinat": [-8.242, 115.375],
+    "koordinat": [
+      -8.242,
+      115.375
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Cuaca cerah, angin lemah. Kondisi aktivitas vulkanik dalam status stabil.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "ciremai",
     "nama": "Ciremai",
     "status": "Normal (Level I)",
-    "koordinat": [-6.892, 108.400],
+    "koordinat": [
+      -6.892,
+      108.4
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Gunung terlihat jelas hingga tertutup kabut. Tidak ada laporan aktivitas anomali.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "tambora",
     "nama": "Tambora",
     "status": "Normal (Level I)",
-    "koordinat": [-8.250, 117.994],
+    "koordinat": [
+      -8.25,
+      117.994
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi visual tenang. Aktivitas seismik dalam batas normal.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "rinjani",
     "nama": "Rinjani",
     "status": "Normal (Level I)",
-    "koordinat": [-8.412, 116.470],
+    "koordinat": [
+      -8.412,
+      116.47
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap putih tipis dari Gunung Baru Jari. Tidak ada peningkatan aktivitas yang signifikan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "raung",
     "nama": "Raung",
     "status": "Normal (Level I)",
-    "koordinat": [-8.125, 114.042],
+    "koordinat": [
+      -8.125,
+      114.042
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi kawah normal. Asap putih tipis teramati sesekali.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "guntur",
     "nama": "Guntur",
     "status": "Normal (Level I)",
-    "koordinat": [-7.142, 107.837],
+    "koordinat": [
+      -7.142,
+      107.837
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas fumarol rendah. Tidak terekam gempa vulkanik yang berarti.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "galunggung",
     "nama": "Galunggung",
     "status": "Normal (Level I)",
-    "koordinat": [-7.250, 108.058],
+    "koordinat": [
+      -7.25,
+      108.058
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Aktivitas kegempaan sangat rendah.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "krakatau",
     "nama": "Krakatau",
     "status": "Normal (Level I)",
-    "koordinat": [-6.103, 105.425],
+    "koordinat": [
+      -6.103,
+      105.425
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kawasan di tengah laut. Dipantau melalui seismik.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "dieng",
     "nama": "Dieng",
     "status": "Normal (Level I)",
-    "koordinat": [-7.199, 109.912],
+    "koordinat": [
+      -7.199,
+      109.912
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kawah Timbang dalam kondisi normal. Konsentrasi gas CO2 dipantau rutin.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "egon",
     "nama": "Egon",
     "status": "Normal (Level I)",
-    "koordinat": [-8.673, 122.454],
+    "koordinat": [
+      -8.673,
+      122.454
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Tidak ada laporan perubahan aktivitas.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "ile-api",
     "nama": "Ile Api",
     "status": "Normal (Level I)",
-    "koordinat": [-8.496, 123.489],
+    "koordinat": [
+      -8.496,
+      123.489
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Fumarol aktif di kawah tetapi dalam batas aman. Tidak ada gempa vulkanik berarti.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "paluweh",
     "nama": "Paluweh",
     "status": "Normal (Level I)",
-    "koordinat": [-8.320, 121.708],
+    "koordinat": [
+      -8.32,
+      121.708
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap putih tipis teramati dari puncak. Gempa tektonik lokal sesekali terekam.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "lamongan",
     "nama": "Lamongan",
     "status": "Normal (Level I)",
-    "koordinat": [-7.982, 113.343],
+    "koordinat": [
+      -7.982,
+      113.343
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi visual tenang. Tidak ada peningkatan aktivitas tercatat.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "welirang",
     "nama": "Welirang",
     "status": "Normal (Level I)",
-    "koordinat": [-7.642, 112.575],
+    "koordinat": [
+      -7.642,
+      112.575
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Fumarol aktif tetapi stabil. Penambangan belerang berjalan normal.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Jawa-Bali"
   },
   {
     "id": "mahawu",
     "nama": "Mahawu",
     "status": "Normal (Level I)",
-    "koordinat": [1.358, 124.858],
+    "koordinat": [
+      1.358,
+      124.858
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi kawah tenang. Tidak ada anomali seismik yang tercatat.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sulawesi"
   },
   {
     "id": "ambang",
     "nama": "Ambang",
     "status": "Normal (Level I)",
-    "koordinat": [0.758, 124.425],
+    "koordinat": [
+      0.758,
+      124.425
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap putih tipis dari kawah. Aktivitas seismik berada di batas bawah normal.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sulawesi"
   },
   {
     "id": "rokatenda",
     "nama": "Rokatenda",
     "status": "Normal (Level I)",
-    "koordinat": [-8.617, 121.706],
+    "koordinat": [
+      -8.617,
+      121.706
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Tidak ada aktivitas erupsi. Kondisi stabil dalam pemantauan PVMBG.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "ebulobo",
     "nama": "Ebulobo",
     "status": "Normal (Level I)",
-    "koordinat": [-8.808, 121.191],
+    "koordinat": [
+      -8.808,
+      121.191
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Pemantauan rutin berjalan normal. Tidak ada indikasi peningkatan aktivitas.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "inielika",
     "nama": "Inielika",
     "status": "Normal (Level I)",
-    "koordinat": [-8.730, 120.991],
+    "koordinat": [
+      -8.73,
+      120.991
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Tidak ada laporan dari pos pengamatan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "inierie",
     "nama": "Inierie",
     "status": "Normal (Level I)",
-    "koordinat": [-8.876, 120.918],
+    "koordinat": [
+      -8.876,
+      120.918
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi visual normal. Pengamatan berjalan rutin.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "sirung",
     "nama": "Sirung",
     "status": "Normal (Level I)",
-    "koordinat": [-8.508, 124.148],
+    "koordinat": [
+      -8.508,
+      124.148
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kawah berair. Aktivitas fumarolik dalam batas normal.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "sangeang-api",
     "nama": "Sangeang Api",
     "status": "Normal (Level I)",
-    "koordinat": [-8.200, 119.070],
+    "koordinat": [
+      -8.2,
+      119.07
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Fumarol aktif di puncak. Tidak ada erupsi eksplosif terdeteksi.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "ile-werung",
     "nama": "Ile Werung",
     "status": "Normal (Level I)",
-    "koordinat": [-8.553, 123.574],
+    "koordinat": [
+      -8.553,
+      123.574
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Tidak ada anomali di kawah.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "batutara",
     "nama": "Batutara",
     "status": "Normal (Level I)",
-    "koordinat": [-7.792, 123.577],
+    "koordinat": [
+      -7.792,
+      123.577
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Pulau vulkanik di Laut Flores. Pemantauan dari kejauhan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "kelimutu",
     "nama": "Kelimutu",
     "status": "Normal (Level I)",
-    "koordinat": [-8.770, 121.820],
+    "koordinat": [
+      -8.77,
+      121.82
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Ketiga danau kawah dalam kondisi stabil. Warna air tidak berubah signifikan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   },
   {
     "id": "gamkonora",
     "nama": "Gamkonora",
     "status": "Normal (Level I)",
-    "koordinat": [1.379, 127.524],
+    "koordinat": [
+      1.379,
+      127.524
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Kegempaan dalam batas normal.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "tidore",
     "nama": "Tidore",
     "status": "Normal (Level I)",
-    "koordinat": [0.657, 127.402],
+    "koordinat": [
+      0.657,
+      127.402
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi visual normal. Tidak ada peningkatan aktivitas tercatat.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "makian",
     "nama": "Makian",
     "status": "Normal (Level I)",
-    "koordinat": [0.322, 127.401],
+    "koordinat": [
+      0.322,
+      127.401
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi stabil. Pemantauan seismik rutin.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "talang",
     "nama": "Talang",
     "status": "Normal (Level I)",
-    "koordinat": [-0.978, 100.679],
+    "koordinat": [
+      -0.978,
+      100.679
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Asap putih tipis dari kawah. Tidak ada peningkatan aktivitas signifikan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sumatra"
   },
   {
     "id": "sorikmarapi",
     "nama": "Sorik Marapi",
     "status": "Normal (Level I)",
-    "koordinat": [0.683, 99.539],
+    "koordinat": [
+      0.683,
+      99.539
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Aktivitas fumarolik normal. Tidak ada gempa vulkanik berarti.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sumatra"
   },
   {
     "id": "marore",
     "nama": "Marore",
     "status": "Normal (Level I)",
-    "koordinat": [4.775, 125.484],
+    "koordinat": [
+      4.775,
+      125.484
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi normal. Pemantauan berjalan rutin.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sulawesi"
   },
   {
     "id": "karangetang-b",
     "nama": "Banua Wuhu",
     "status": "Normal (Level I)",
-    "koordinat": [3.138, 125.491],
+    "koordinat": [
+      3.138,
+      125.491
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Gunung api bawah laut di utara Sulawesi. Dipantau dari permukaan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sulawesi"
   },
   {
     "id": "ternate",
     "nama": "Gamalama (Ternate)",
     "status": "Normal (Level I)",
-    "koordinat": [0.804, 127.332],
+    "koordinat": [
+      0.804,
+      127.332
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Asap kawah tidak teramati.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Sulawesi"
   },
   {
     "id": "wurlali",
     "nama": "Wurlali",
     "status": "Normal (Level I)",
-    "koordinat": [-7.125, 128.680],
+    "koordinat": [
+      -7.125,
+      128.68
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Tidak ada rekaman kegempaan vulkanik signifikan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "teon",
     "nama": "Teon",
     "status": "Normal (Level I)",
-    "koordinat": [-6.916, 129.125],
+    "koordinat": [
+      -6.916,
+      129.125
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi normal. Pemantauan berkala berjalan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "nila",
     "nama": "Nila",
     "status": "Normal (Level I)",
-    "koordinat": [-6.730, 129.498],
+    "koordinat": [
+      -6.73,
+      129.498
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Tidak ada laporan aktivitas anomali. Status stabil.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "serua",
     "nama": "Serua",
     "status": "Normal (Level I)",
-    "koordinat": [-6.300, 130.005],
+    "koordinat": [
+      -6.3,
+      130.005
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Kondisi tenang. Tidak ada perubahan aktivitas dari baseline.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "manuk",
     "nama": "Manuk",
     "status": "Normal (Level I)",
-    "koordinat": [-5.534, 130.298],
+    "koordinat": [
+      -5.534,
+      130.298
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Pulau vulkanik aktif. Pemantauan dilakukan dari kejauhan.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Maluku-Papua"
   },
   {
     "id": "lewotolo",
     "nama": "Lewotolo",
     "status": "Normal (Level I)",
-    "koordinat": [-8.272, 123.507],
+    "koordinat": [
+      -8.272,
+      123.507
+    ],
     "waktuUpdate": "31 Oktober 2026",
     "visual": "Status normal. Pemantauan instrumen berjalan rutin.",
     "radiusBahaya": 0,
-    "warna": "#3f9b5f"
+    "warna": "#3f9b5f",
+    "pulau": "Nusa Tenggara"
   }
 ]

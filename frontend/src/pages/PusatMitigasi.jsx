@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -13,6 +13,8 @@ import {
   Wind,
   Heart,
   BookOpen,
+  Check,
+  Phone,
 } from 'lucide-react';
 import PageHeader from '../component/PageHeader.jsx';
 
@@ -138,13 +140,50 @@ const TAS_SIAGA = [
 ];
 
 const KONTAK_DARURAT = [
-  { instansi: 'BPBD (Badan Penanggulangan Bencana Daerah)', nomor: '119 ext 8', keterangan: 'Pusat komando tanggap bencana di tingkat daerah.' },
-  { instansi: 'PVMBG / MAGMA Indonesia', nomor: '(022) 7272606', keterangan: 'Pemantauan aktivitas vulkanik dan peringatan dini erupsi.' },
-  { instansi: 'Basarnas (SAR)', nomor: '115', keterangan: 'Pencarian dan pertolongan korban bencana.' },
-  { instansi: 'Ambulans / Gawat Darurat', nomor: '118 / 119', keterangan: 'Layanan medis darurat 24 jam.' },
-  { instansi: 'Polisi', nomor: '110', keterangan: 'Pengamanan, evakuasi, dan pengaturan lalu lintas darurat.' },
-  { instansi: 'PLN (Gangguan Listrik)', nomor: '123', keterangan: 'Laporan gangguan dan pemadaman listrik pasca-erupsi.' },
+  { instansi: 'BPBD (Badan Penanggulangan Bencana Daerah)', nomor: '119 ext 8', tel: '119,8', keterangan: 'Pusat komando tanggap bencana di tingkat daerah.' },
+  { instansi: 'PVMBG / MAGMA Indonesia', nomor: '(022) 7272606', tel: '0227272606', keterangan: 'Pemantauan aktivitas vulkanik dan peringatan dini erupsi.' },
+  { instansi: 'Basarnas (SAR)', nomor: '115', tel: '115', keterangan: 'Pencarian dan pertolongan korban bencana.' },
+  { instansi: 'Ambulans / Gawat Darurat', nomor: '118 / 119', tel: '118', keterangan: 'Layanan medis darurat 24 jam.' },
+  { instansi: 'Polisi', nomor: '110', tel: '110', keterangan: 'Pengamanan, evakuasi, dan pengaturan lalu lintas darurat.' },
+  { instansi: 'PLN (Gangguan Listrik)', nomor: '123', tel: '123', keterangan: 'Laporan gangguan dan pemadaman listrik pasca-erupsi.' },
 ];
+
+const KUNCI_TAS = 'simb-tas-siaga';
+
+function useTasSiap() {
+  const [siap, setSiap] = useState([]);
+
+  useEffect(() => {
+    try {
+      const simpan = JSON.parse(localStorage.getItem(KUNCI_TAS) || '[]');
+      if (Array.isArray(simpan)) setSiap(simpan.filter((n) => TAS_SIAGA.some((t) => t.nama === n)));
+    } catch (_) {
+      /* penyimpanan tidak tersedia: lanjut tanpa menyimpan */
+    }
+  }, []);
+
+  const simpan = (baru) => {
+    try {
+      localStorage.setItem(KUNCI_TAS, JSON.stringify(baru));
+    } catch (_) {
+      /* abaikan */
+    }
+  };
+
+  const ubah = (nama) =>
+    setSiap((prev) => {
+      const baru = prev.includes(nama) ? prev.filter((n) => n !== nama) : [...prev, nama];
+      simpan(baru);
+      return baru;
+    });
+
+  const reset = () => {
+    setSiap([]);
+    simpan([]);
+  };
+
+  return [siap, ubah, reset];
+}
 
 function FaseAccordion({ fase, index }) {
   const [buka, setBuka] = useState(index === 0);
@@ -165,7 +204,7 @@ function FaseAccordion({ fase, index }) {
         aria-controls={`panel-${fase.id}`}
         className={`group flex w-full items-start gap-5 py-8 text-left transition-colors hover:bg-[#f1efe8]/[0.02] lg:py-10 ${focusRing}`}
       >
-        <span className="simb-num mt-0.5 shrink-0 text-4xl leading-none text-[#5b666c] lg:text-5xl">
+        <span className={`simb-num mt-0.5 shrink-0 text-4xl leading-none transition-colors lg:text-5xl ${buka ? 'text-[#d9651b]' : 'text-[#5b666c]'}`}>
           {String(fase.nomor).padStart(2, '0')}
         </span>
 
@@ -173,7 +212,13 @@ function FaseAccordion({ fase, index }) {
           <h2 className="simb-display text-2xl leading-tight text-[#f1efe8] lg:text-3xl">
             {fase.nama}
           </h2>
-          <p className="mt-1.5 text-[#8a908d]">{fase.waktu}</p>
+          <p className="mt-1.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-[#8a908d]">
+            <span className="inline-flex items-center gap-1.5 text-[#dcd9d0]">
+              <Ikon size={15} aria-hidden="true" />
+              {fase.label}
+            </span>
+            <span>{fase.waktu}</span>
+          </p>
         </div>
 
         <motion.span
@@ -220,6 +265,11 @@ function FaseAccordion({ fase, index }) {
 }
 
 export default function PusatMitigasi() {
+  const [siap, ubahTas, resetTas] = useTasSiap();
+  useEffect(() => {
+    document.title = 'Pusat Mitigasi | SIMB-GB';
+  }, []);
+
   return (
     <>
       <PageHeader
@@ -266,9 +316,35 @@ export default function PusatMitigasi() {
             Siapkan tas ini jauh-jauh hari dan simpan di tempat yang mudah dijangkau seluruh anggota keluarga. Periksa isinya setiap 6 bulan, ganti makanan dan air yang sudah kedaluwarsa.
           </p>
 
-          <ul className="m-0 mt-8 list-none p-0">
+          <div className="mt-8" role="status" aria-live="polite">
+            <div className="flex items-baseline justify-between gap-4">
+              <p className="text-sm text-[#a9ada9]">
+                <span className="simb-num text-2xl text-[#f1efe8]">{siap.length}</span> dari {TAS_SIAGA.length} perlengkapan sudah siap
+              </p>
+              {siap.length > 0 && (
+                <button
+                  type="button"
+                  onClick={resetTas}
+                  className={`text-sm text-[#d9651b] transition-all hover:text-[#e8742a] active:scale-[0.97] ${focusRing}`}
+                >
+                  Kosongkan centang
+                </button>
+              )}
+            </div>
+            <div className="mt-3 h-1.5 w-full rounded-[1px] bg-[#232a2f]">
+              <motion.span
+                animate={{ width: `${(siap.length / TAS_SIAGA.length) * 100}%` }}
+                transition={{ duration: 0.3 }}
+                style={{ background: siap.length === TAS_SIAGA.length ? '#3f9b5f' : '#d9651b' }}
+                className="block h-full rounded-[1px]"
+              />
+            </div>
+          </div>
+
+          <ul className="m-0 mt-6 list-none p-0">
             {TAS_SIAGA.map((item, i) => {
               const ItemIcon = item.ikon;
+              const sudah = siap.includes(item.nama);
               return (
                 <motion.li
                   key={item.nama}
@@ -276,11 +352,25 @@ export default function PusatMitigasi() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
                   transition={{ duration: 0.35, delay: i * 0.04 }}
-                  className="grid gap-1 border-t border-[#343c41] py-5 last:border-b md:grid-cols-[1.25rem_14rem_1fr] md:items-baseline md:gap-x-4"
+                  className="grid grid-cols-[1.25rem_1fr] gap-x-4 gap-y-1 border-t border-[#343c41] py-5 last:border-b md:grid-cols-[1.25rem_14rem_1fr] md:items-baseline"
                 >
-                  <ItemIcon size={15} className="hidden text-[#5b666c] md:block" aria-hidden="true" />
-                  <h3 className="text-[15px] font-semibold text-[#f1efe8]">{item.nama}</h3>
-                  <p className="max-w-prose text-[15px] leading-relaxed text-[#a9ada9]">{item.keterangan}</p>
+                  <button
+                    type="button"
+                    role="checkbox"
+                    aria-checked={sudah}
+                    aria-label={`Tandai ${item.nama} sudah siap`}
+                    onClick={() => ubahTas(item.nama)}
+                    className={`mt-0.5 flex h-5 w-5 items-center justify-center rounded border transition-all active:scale-90 ${
+                      sudah ? 'border-[#3f9b5f] bg-[#3f9b5f] text-white' : 'border-[#5b666c] text-transparent hover:border-[#dcd9d0]'
+                    } ${focusRing}`}
+                  >
+                    <Check size={13} aria-hidden="true" />
+                  </button>
+                  <h3 className={`text-[15px] font-semibold transition-colors ${sudah ? 'text-[#8a908d]' : 'text-[#f1efe8]'}`}>
+                    <ItemIcon size={15} className="mr-2 hidden align-[-2px] text-[#5b666c] md:inline" aria-hidden="true" />
+                    {item.nama}
+                  </h3>
+                  <p className="col-start-2 max-w-prose text-[15px] leading-relaxed text-[#a9ada9] md:col-start-auto">{item.keterangan}</p>
                 </motion.li>
               );
             })}
@@ -311,10 +401,17 @@ export default function PusatMitigasi() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-40px' }}
                 transition={{ duration: 0.35, delay: i * 0.04 }}
-                className="grid gap-1 border-t border-[#343c41] py-5 last:border-b md:grid-cols-[14rem_7rem_1fr] md:items-baseline md:gap-x-8"
+                className="grid gap-1 border-t border-[#343c41] py-5 last:border-b md:grid-cols-[14rem_9rem_1fr] md:items-baseline md:gap-x-8"
               >
                 <h3 className="text-[15px] font-semibold text-[#f1efe8]">{k.instansi}</h3>
-                <p className="simb-num text-lg leading-tight text-[#d9651b]">{k.nomor}</p>
+                <a
+                  href={`tel:${k.tel}`}
+                  aria-label={`Telepon ${k.instansi} di ${k.nomor}`}
+                  className={`simb-num inline-flex items-center gap-1.5 text-lg leading-tight text-[#d9651b] transition-colors hover:text-[#e8742a] ${focusRing}`}
+                >
+                  <Phone size={14} aria-hidden="true" />
+                  {k.nomor}
+                </a>
                 <p className="max-w-prose text-[15px] leading-relaxed text-[#a9ada9]">{k.keterangan}</p>
               </motion.li>
             ))}
@@ -347,7 +444,7 @@ export default function PusatMitigasi() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               to="/peta"
-              className={`rounded-md bg-[#d9651b] px-6 py-3 font-semibold text-white transition-colors hover:bg-[#e8742a] ${focusRing}`}
+              className={`rounded-md bg-[#d9651b] px-6 py-3 font-semibold text-white transition-all hover:bg-[#e8742a] active:scale-[0.97] ${focusRing}`}
             >
               Buka peta KRB
             </Link>
