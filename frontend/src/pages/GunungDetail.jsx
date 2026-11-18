@@ -9,7 +9,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import PageHeader from '../component/PageHeader.jsx';
 import { fetchMagmaRealtimeData } from '../services/magmaApi.js';
-import riwayat from '../data/riwayat.json';
+import riwayat from '../data/Riwayat.json';
 
 const focusRing =
   'focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#dcd9d0]';
